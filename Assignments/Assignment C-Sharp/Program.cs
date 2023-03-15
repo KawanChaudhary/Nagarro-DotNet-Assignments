@@ -298,9 +298,95 @@ namespace Assignments
             }
 
         }
+
+        // Exercise 5 Code
+
+        enum DuckType
+        {
+            RubberDuck,
+            MallhardDuck,
+            RedheadDuck
+        }
+
+        class Duck
+        {
+            private double weight;
+            private int totalWings;
+            private DuckType newDuck;
+
+            // Constructor
+            public Duck(double weight, int totalWings, DuckType newDuck)
+            {
+                this.weight = weight;
+                this.totalWings = totalWings;
+                this.newDuck = newDuck;
+            }
+
+            public void showDuckDetails()
+            {
+
+                if(newDuck == DuckType.RubberDuck)
+                {
+                    Console.WriteLine("\n\nRubber DucK:");
+                }
+                else if (newDuck == DuckType.RedheadDuck)
+                {
+                    Console.WriteLine("\n\nRedhead DucK:");
+                }
+                else if (newDuck == DuckType.MallhardDuck)
+                {
+                    Console.WriteLine("\n\nMallhard DucK:");
+                }
+
+                Console.WriteLine($"\nWeight of the duck: {this.weight}");
+                Console.WriteLine($"\nWings of the Duck: {this.totalWings}");
+            }
+        }
+
+        class RubberDuck: Duck
+        {
+            public RubberDuck(double weight, int totalWings, DuckType newDuck): base(weight, totalWings, newDuck)
+            {
+
+            }
+            public void showRubberDuckDetails()
+            {
+                showDuckDetails();
+                Console.WriteLine("\nRubber duck don't fly and squeak.");
+            }
+        }
+        class MallhardDuck: Duck
+        {
+            public MallhardDuck(double weight, int totalWings, DuckType newDuck) : base(weight, totalWings, newDuck)
+            {
+
+            }
+            public void showMallhardDuckDetails()
+            {
+                showDuckDetails();
+                Console.WriteLine("\nMallhard duck fly fast and quack loud.");
+            }
+        }
+        class RedheadDuck : Duck
+        {
+            public RedheadDuck(double weight, int totalWings, DuckType newDuck) : base(weight, totalWings, newDuck)
+            {
+
+            }
+
+            public void showRedheadDuckDetails()
+            {
+                showDuckDetails();
+                Console.WriteLine("\nRedhead duck fly slow and quack mild.");
+            }
+        }
+
         public Assignment2()
         {
+
+            // Exercise 4:
             // Mobile
+            /*
             Mobile obj1 = new Mobile();
             obj1.MoveBy();
             obj1.MoveBy();
@@ -310,7 +396,22 @@ namespace Assignments
             Immobile obj2 = new Immobile();
             obj2.MoveBy();
             obj2.MoveBy();
-            obj2.PrintDetails();
+            obj2.PrintDetails();*/
+
+            // Exercise 5
+
+            // Rubber Duck
+            RubberDuck duck1 = new RubberDuck(12.34, 2, DuckType.RubberDuck);
+            duck1.showRubberDuckDetails();
+
+            // Redhead Duck
+            RedheadDuck duck2 = new RedheadDuck(6.45, 4, DuckType.RedheadDuck);
+            duck2.showRedheadDuckDetails();
+
+            // Mallhard Duck
+            MallhardDuck duck3 = new MallhardDuck(10.5, 3, DuckType.MallhardDuck);
+            duck3.showMallhardDuckDetails();
+
         }
     }
 
