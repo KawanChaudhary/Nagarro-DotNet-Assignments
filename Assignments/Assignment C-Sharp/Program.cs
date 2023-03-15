@@ -386,7 +386,7 @@ namespace Assignments
 
             // Exercise 4:
             // Mobile
-            /*
+            
             Mobile obj1 = new Mobile();
             obj1.MoveBy();
             obj1.MoveBy();
@@ -396,7 +396,7 @@ namespace Assignments
             Immobile obj2 = new Immobile();
             obj2.MoveBy();
             obj2.MoveBy();
-            obj2.PrintDetails();*/
+            obj2.PrintDetails();
 
             // Exercise 5
 
