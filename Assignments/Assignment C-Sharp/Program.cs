@@ -2,11 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Assignment1
+namespace Assignments
 {
     class Program
+    {
+        static void Main()
+        {
+            // Assignment 1
+            //Assignment1 obj1 = new Assignment1();
+
+            // Assignment 2
+            Assignment2 obj2 = new Assignment2();
+
+            Console.ReadLine();
+        }
+    }
+    class Assignment1
     {
         static bool IsPrime(int number)
         {
@@ -185,7 +197,7 @@ namespace Assignment1
             else
                 Console.WriteLine("Could not be parsed.");
         }
-        static void Main(string[] args)
+        public Assignment1()
         {
             Console.WriteLine("---------------- Exercise 1 ----------------\n");
             Exercise1();
@@ -195,23 +207,112 @@ namespace Assignment1
 
             Console.WriteLine("\n\n---------------- Exercise 3 ----------------\n");
             Exercise3();
-
-            Console.ReadLine();
         }
     }
-}
+    
 
-namespace Assignemnt2
-{
-    class Equipment
+    class Assignment2
     {
-        public string Name = "";
-        public string description = "";
-        public int 
-        static void Main(string[] args)
+        class Equipment
         {
-                
+            public int vehicleType = -1; // 0 or 1: o for Mobile Vehicle and 1 for Immobile Vehicle
+            public string name = "";
+            public string description = "";
+            public int distance = 0;
+            public int maintenanceCost = 0;
+            public enum EquipmentType
+            {
+                MobileType,
+                ImmobileType,
+            }
+            public Equipment(int vehicleType)
+            {
+                this.vehicleType = vehicleType;
+                DetailsOfEquipment();
+            }
+            public void DetailsOfEquipment()
+            {
+                Console.Write("\nName of equipment: ");
+                this.name = Console.ReadLine();
+                Console.Write("\nDescription of equipment: ");
+                this.description = Console.ReadLine();
+            }
+
+            public void MoveBy(int value)
+            {
+                Console.Write("\nDistance Covered: ");
+                int dist = Int32.Parse(Console.ReadLine());
+
+                this.distance += dist;
+                this.maintenanceCost += (dist * value);
+            }
+
+            public void PrintDetailsOfEquipment()
+            {
+                Console.WriteLine("\n\n---------------- Equipment Details ----------------");
+                Console.WriteLine("\nName of Equipment: " + this.name);
+                Console.WriteLine("\nDescription of Equipment: " + this.description);
+                Console.WriteLine("\nTotal Distance of Equipment: " + this.distance);
+                Console.WriteLine("\nTotal Maintenance Cost of Equipment: " + this.maintenanceCost);
+            }
+
+        }
+        class Mobile : Equipment
+        {
+            public int wheels = 0;
+            public Mobile() : base(0)
+            {
+                Console.Write("\nNo. of Wheels: ");
+                this.wheels = Int32.Parse(Console.ReadLine());
+            }
+            public void MoveBy()
+            {
+                MoveBy(this.wheels);
+            }
+            public void PrintDetails()
+            {
+                PrintDetailsOfEquipment();
+                Console.WriteLine("\nNo. of Wheels of Equipemnt: " + this.wheels);
+                Console.WriteLine("\n---------------------------------------------------");
+            }
+
+        }
+        class Immobile : Equipment
+        {
+            public int weight = 0;
+            public Immobile() : base(1)
+            {
+                Console.Write("\nWeight of Equipment: ");
+                this.weight = Int32.Parse(Console.ReadLine());
+            }
+            public void MoveBy()
+            {
+                MoveBy(this.weight);
+            }
+
+            public void PrintDetails()
+            {
+                PrintDetailsOfEquipment();
+                Console.WriteLine("\nWeight of Equipemnt: " + this.weight);
+                Console.WriteLine("\n---------------------------------------------------");
+            }
+
+        }
+        public Assignment2()
+        {
+            // Mobile
+            Mobile obj1 = new Mobile();
+            obj1.MoveBy();
+            obj1.MoveBy();
+            obj1.PrintDetails();
+
+            //Immobile
+            Immobile obj2 = new Immobile();
+            obj2.MoveBy();
+            obj2.MoveBy();
+            obj2.PrintDetails();
         }
     }
-}
 
+    
+}

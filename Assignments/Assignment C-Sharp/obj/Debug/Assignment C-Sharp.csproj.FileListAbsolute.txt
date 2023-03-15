@@ -5,3 +5,10 @@ C:\Users\kawansingh\Documents\kawan-kumar-singh\C# Assignment\Assignment C-Sharp
 C:\Users\kawansingh\Documents\kawan-kumar-singh\C# Assignment\Assignment C-Sharp\obj\Debug\Assignment C-Sharp.csproj.CoreCompileInputs.cache
 C:\Users\kawansingh\Documents\kawan-kumar-singh\C# Assignment\Assignment C-Sharp\obj\Debug\Assignment C-Sharp.exe
 C:\Users\kawansingh\Documents\kawan-kumar-singh\C# Assignment\Assignment C-Sharp\obj\Debug\Assignment C-Sharp.pdb
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\Assignment C-Sharp\bin\Debug\Assignment C-Sharp.exe.config
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\Assignment C-Sharp\bin\Debug\Assignment C-Sharp.exe
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\Assignment C-Sharp\bin\Debug\Assignment C-Sharp.pdb
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\Assignment C-Sharp\obj\Debug\Assignment C-Sharp.csproj.AssemblyReference.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\Assignment C-Sharp\obj\Debug\Assignment C-Sharp.csproj.CoreCompileInputs.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\Assignment C-Sharp\obj\Debug\Assignment C-Sharp.exe
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\Assignment C-Sharp\obj\Debug\Assignment C-Sharp.pdb
