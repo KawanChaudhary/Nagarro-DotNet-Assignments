@@ -43,6 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assignments\Assignment1\Assignment1.cs" />
+    <Compile Include="Assignments\Assignment2\Assignment2.cs" />
+    <Compile Include="Assignments\Assignment2\Exercise4\abstractClass.cs" />
+    <Compile Include="Assignments\Assignment2\Exercise4\Immobile.cs" />
+    <Compile Include="Assignments\Assignment2\Exercise4\Mobile.cs" />
+    <Compile Include="Assignments\Assignment2\Exercise4\Equipment.cs" />
+    <Compile Include="Assignments\Assignment2\Exercise4\Exercise4.cs" />
+    <Compile Include="Assignments\Assignment2\Exercise5\Duck.cs" />
+    <Compile Include="Assignments\Assignment2\Exercise5\Exercise5.cs" />
+    <Compile Include="Assignments\Assignment2\Exercise5\MallhardDuck.cs" />
+    <Compile Include="Assignments\Assignment2\Exercise5\RedheadDuck.cs" />
+    <Compile Include="Assignments\Assignment2\Exercise5\RubberDuck.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
