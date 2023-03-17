@@ -12,9 +12,9 @@ namespace Assignment_C_Sharp.Assignments.Assignment2.Exercise5
         {
 
         }
-        public void showRubberDuckDetails()
+        public override void ShowDuckDetails()
         {
-            ShowDuckDetails();
+            base.ShowDuckDetails();
             Console.WriteLine("\nRubber duck don't fly and squeak.");
         }
     }

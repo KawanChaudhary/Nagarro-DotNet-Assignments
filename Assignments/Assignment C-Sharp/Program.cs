@@ -49,7 +49,7 @@ namespace Assignments
                 Console.Write("\nWant to review any other assignment? (y/n): ");
                 string response = Console.ReadLine().ToLower();
 
-                if(response == "y" || response == "yes")
+                if (response == "y" || response == "yes")
                 {
                     Main();
                 }
@@ -59,13 +59,11 @@ namespace Assignments
                 }
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("Please enter a valid number. " + e.Message);
                 Main();
             }
-
-            Console.ReadLine();
         }
     }
 }

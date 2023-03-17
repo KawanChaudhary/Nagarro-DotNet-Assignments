@@ -12,9 +12,9 @@ namespace Assignment_C_Sharp.Assignments.Assignment2.Exercise5
         {
 
         }
-        public void showRedheadDuckDetails()
+        public override void ShowDuckDetails()
         {
-            ShowDuckDetails();
+            base.ShowDuckDetails();
             Console.WriteLine("\nRedhead duck fly slow and quack mild.");
         }
     }
