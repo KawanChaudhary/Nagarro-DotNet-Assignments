@@ -187,13 +187,12 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise6
                 Console.WriteLine("2. Delete ans equipment");
                 Console.WriteLine("3. Move any equipment");
                 Console.WriteLine("4. List all equipment");
-                Console.WriteLine("5. Show details");
-                Console.WriteLine("6. List all mobile equipment");
-                Console.WriteLine("7. List all Immobile equipment");
-                Console.WriteLine("8. List all equipment that have not been moved till now");
-                Console.WriteLine("9. Delete all equipment");
-                Console.WriteLine("10. Delete all immobile equipment");
-                Console.WriteLine("11. Delete all mobile equipment");
+                Console.WriteLine("5. List all mobile equipment");
+                Console.WriteLine("6. List all Immobile equipment");
+                Console.WriteLine("7. List all equipment that have not been moved till now");
+                Console.WriteLine("8. Delete all equipment");
+                Console.WriteLine("9. Delete all immobile equipment");
+                Console.WriteLine("10. Delete all mobile equipment");
                 Console.WriteLine("0. Exit");
                 Console.Write("\nYour choice: ");
 
@@ -205,6 +204,9 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise6
                 {
                     switch (choice)
                     {
+                        case 0:
+                            //exit
+                            break;
                         case 1://Create an equipment – mobile and immobile
                             createEquipment(equipments);
                             break;
@@ -218,33 +220,26 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise6
                             listAllEquipment(equipments);
                             break;
                         case 5:
-                            listAllEquipment(equipments);
-                            // showdetails(equipments);
-                            break;
-                        case 6:
                             listAllMobileEquipment(equipments);
                             break;
-                        case 7:
+                        case 6:
                             listAllImmobileEquipment(equipments);
                             break;
-                        case 8:
+                        case 7:
                             listAllEquipmentNotBeenMovedTillNow(equipments);
                             break;
-                        case 9:
+                        case 8:
                             //Delete all equipment
                             equipments.Clear();
                             Console.WriteLine("\nAll equipments have been deleted.\n");
                             break;
-                        case 10:
+                        case 9:
                             equipments.RemoveAll(e => e is Immobile);
                             Console.WriteLine("\nAll Immobile equipments have been deleted.\n");
                             break;
-                        case 11:
+                        case 10:
                             equipments.RemoveAll(e => e is Mobile);
                             Console.WriteLine("\nAll Mobile equipments have been deleted.\n");
-                            break;
-                        case 12:
-                            //exit
                             break;
                         default:
                             Console.WriteLine("\nSelect correct menu item.\n");
