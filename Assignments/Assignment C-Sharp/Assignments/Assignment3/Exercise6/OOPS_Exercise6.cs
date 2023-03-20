@@ -184,7 +184,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise6
             while (choice != 0  )
             {
                 Console.WriteLine("\n1. Create an equipment – mobile and immobile");
-                Console.WriteLine("2. Delete ans equipment");
+                Console.WriteLine("2. Delete any equipment");
                 Console.WriteLine("3. Move any equipment");
                 Console.WriteLine("4. List all equipment");
                 Console.WriteLine("5. List all mobile equipment");
