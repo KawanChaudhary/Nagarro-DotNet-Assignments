@@ -56,6 +56,12 @@
     <Compile Include="Assignments\Assignment2\Exercise5\MallhardDuck.cs" />
     <Compile Include="Assignments\Assignment2\Exercise5\RedheadDuck.cs" />
     <Compile Include="Assignments\Assignment2\Exercise5\RubberDuck.cs" />
+    <Compile Include="Assignments\Assignment3\Assignment3.cs" />
+    <Compile Include="Assignments\Assignment3\Exercise6\abstractClass.cs" />
+    <Compile Include="Assignments\Assignment3\Exercise6\Equipment.cs" />
+    <Compile Include="Assignments\Assignment3\Exercise6\Immobile.cs" />
+    <Compile Include="Assignments\Assignment3\Exercise6\Mobile.cs" />
+    <Compile Include="Assignments\Assignment3\Exercise6\OOPS_Exercise6.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

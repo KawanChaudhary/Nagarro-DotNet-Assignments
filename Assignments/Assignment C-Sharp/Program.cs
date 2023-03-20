@@ -1,5 +1,6 @@
 ﻿using Assignment_C_Sharp.Assignments.Assignment1;
 using Assignment_C_Sharp.Assignments.Assignment2;
+using Assignment_C_Sharp.Assignments.Assignmnet3;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace Assignments
             {
                 Console.Write("\n\nEnter the assignment No. : ");
                 int assignmentNumber = Int32.Parse(Console.ReadLine());
-
+                Console.WriteLine("");
                 switch (assignmentNumber)
                 {
                     case 0:
@@ -39,6 +40,10 @@ namespace Assignments
                     case 2:
                         Console.WriteLine("---- Assignment 2 ----");
                         Assignment2 assignment2 = new Assignment2();
+                        break;
+                    case 3:
+                        Console.WriteLine("---- Assignmnet 3 ----");
+                        Assignment3 assignmnet3 = new Assignment3();
                         break;
                     default:
                         Console.WriteLine("Sorry, not yet done. :(");
