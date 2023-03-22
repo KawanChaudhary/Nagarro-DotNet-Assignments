@@ -5,8 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise6
- {  
-    class Equipment : AbstractEquipmentClass
+ {
+    abstract class AbstractEquipment
+    {
+        public abstract void PrintDetailsOfEquipment();
+        public abstract void MoveBy();
+        public abstract void MoveBy(int value);
+    }
+
+    class Equipment : AbstractEquipment
     {
 
         private string nameEquipment = "";

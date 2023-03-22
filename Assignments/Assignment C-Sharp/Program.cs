@@ -1,5 +1,6 @@
 ﻿using Assignment_C_Sharp.Assignments.Assignment1;
 using Assignment_C_Sharp.Assignments.Assignment2;
+using Assignment_C_Sharp.Assignments.Assignment4;
 using Assignment_C_Sharp.Assignments.Assignmnet3;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,10 @@ namespace Assignments
                     case 3:
                         Console.WriteLine("---- Assignmnet 3 ----");
                         Assignment3 assignmnet3 = new Assignment3();
+                        break;
+                    case 4:
+                        Console.WriteLine("---- Assignmnet 4 ----");
+                        Assignment4 assignmnet4 = new Assignment4();
                         break;
                     default:
                         Console.WriteLine("Sorry, not yet done. :(");
