@@ -63,7 +63,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
         }
         private void DeleteDuck(List<Duck> ducks)
         {
-            if (ducks.Count > 0)
+            if (ducks.Any())
             {
                 ShowAllDucks(ducks);
                 int selectedDuck = -1;
@@ -85,7 +85,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
         }
         private void ShowAllDucks(List<Duck> ducks)
         {
-            if (ducks.Count > 0)
+            if (ducks.Any())
             {
                 Console.WriteLine("\n{0,-15}{1,-25}{2,-15}{3,-15}", "No", "Type of Duck", "Weight", "Wings");
                 for (int i = 0; i < ducks.Count; i++)
@@ -102,7 +102,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
 
         private void DucksInIncreasingWeight(List<Duck> ducks)
         {
-            if(ducks.Count > 0)
+            if(ducks.Any())
             {
                 List<Duck> copyOfDuck = new List<Duck>();
                 copyOfDuck.AddRange(ducks);
@@ -120,7 +120,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
 
         private void DucksInIncreasingNoOfWings(List<Duck> ducks)
         {
-            if (ducks.Count > 0)
+            if (ducks.Any())
             {
                 List<Duck> copyOfDuck = new List<Duck>();
                 copyOfDuck.AddRange(ducks);
@@ -138,7 +138,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
 
         private void AnyDuckDetails(List<Duck> ducks)
         {
-            if (ducks.Count > 0)
+            if (ducks.Any())
             {
                 ShowAllDucks(ducks);
                 int selectedDuck = -1;

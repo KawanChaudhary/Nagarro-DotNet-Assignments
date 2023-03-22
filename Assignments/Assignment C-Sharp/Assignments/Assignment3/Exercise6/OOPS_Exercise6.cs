@@ -53,7 +53,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise6
         }
         private void deleteEquipment(List<Equipment> equipments)
         {
-            if (equipments.Count > 0)
+            if (equipments.Any())
             {
                 listAllEquipment(equipments);
                 int selectedMobileEquipment = -1;
@@ -75,7 +75,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise6
         }
         private void listAllEquipment(List<Equipment> equipments)
         {
-            if (equipments.Count > 0)
+            if (equipments.Any())
             {
                 Console.WriteLine("\n{0,-15}{1,-25}{2,-15}", "No", "Name", "Description");
                 for (int i = 0; i < equipments.Count; i++)
@@ -91,7 +91,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise6
         }
         private void listAllMobileEquipment(List<Equipment> equipments)
         {
-            if (equipments.Count > 0)
+            if (equipments.Any())
             {
                 Console.WriteLine("\n{0,-15}{1,-15}{2,-25}{3,-35}{4,-15}{5,-15}", "No", "Type", "Name", "Description", "Cost", "Distance moved");
                 for (int i = 0; i < equipments.Count; i++)
@@ -111,16 +111,15 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise6
         }
         private void listAllImmobileEquipment(List<Equipment> equipments)
         {
-            if (equipments.Count > 0)
+            if (equipments.Any())
             {
+                int i = 0;
                 Console.WriteLine("\n{0,-15}{1,-15}{2,-25}{3,-35}{4,-15}{5,-15}", "No", "Type", "Name", "Description", "Cost", "Distance moved");
-                for (int i = 0; i < equipments.Count; i++)
+                foreach (Equipment equipment in equipments.FindAll(e => e is Immobile))
                 {
-                    if (equipments[i].Type == EquipmentType.ImmobileType)
-                    {
-                        Console.WriteLine("{0,-15}{1,-15}{2,-25}{3,-35}{4,-15}{5,-15}", (i + 1), "Immobile", equipments[i].Name, equipments[i].Description,
+                    Console.WriteLine("{0,-15}{1,-15}{2,-25}{3,-35}{4,-15}{5,-15}", (i + 1), "Immobile", equipments[i].Name, equipments[i].Description,
                             equipments[i].MaintenanceCost, equipments[i].Distance);
-                    }
+                    i++;
                 }
             }
             else
@@ -131,7 +130,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise6
         }
         private void listAllEquipmentNotBeenMovedTillNow(List<Equipment> equipments)
         {
-            if (equipments.Count > 0)
+            if (equipments.Any())
             {
                 Console.WriteLine("\n{0,-15}{1,-15}{2,-25}{3,-35}{4,-15}{5,-15}", "No", "Type", "Name", "Description", "Cost", "Distance moved");
                 for (int i = 0; i < equipments.Count; i++)
@@ -151,7 +150,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise6
         }
         private void moveEquipment(List<Equipment> equipments)
         {
-            if (equipments.Count > 0)
+            if (equipments.Any())
             {
                 listAllEquipment(equipments);
                 int selectedMobileEquipment = -1;
