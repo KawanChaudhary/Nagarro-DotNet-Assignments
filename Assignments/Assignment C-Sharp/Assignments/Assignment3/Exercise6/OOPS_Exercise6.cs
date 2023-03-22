@@ -93,14 +93,13 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise6
         {
             if (equipments.Any())
             {
+                int i = 0;
                 Console.WriteLine("\n{0,-15}{1,-15}{2,-25}{3,-35}{4,-15}{5,-15}", "No", "Type", "Name", "Description", "Cost", "Distance moved");
-                for (int i = 0; i < equipments.Count; i++)
+                foreach (Equipment equipment in equipments.FindAll(e => e is Mobile))
                 {
-                    if(equipments[i].Type == EquipmentType.MobileType)
-                    {
-                        Console.WriteLine("{0,-15}{1,-15}{2,-25}{3,-35}{4,-15}{5,-15}", (i + 1), "Mobile", equipments[i].Name, equipments[i].Description,
-                            equipments[i].MaintenanceCost, equipments[i].Distance);
-                    }
+                    Console.WriteLine("{0,-15}{1,-15}{2,-25}{3,-35}{4,-15}{5,-15}", (i + 1), "Mobile", equipment.Name, equipment.Description,
+                            equipment.MaintenanceCost, equipment.Distance);
+                    i++;
                 }
             }
             else
@@ -117,8 +116,8 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise6
                 Console.WriteLine("\n{0,-15}{1,-15}{2,-25}{3,-35}{4,-15}{5,-15}", "No", "Type", "Name", "Description", "Cost", "Distance moved");
                 foreach (Equipment equipment in equipments.FindAll(e => e is Immobile))
                 {
-                    Console.WriteLine("{0,-15}{1,-15}{2,-25}{3,-35}{4,-15}{5,-15}", (i + 1), "Immobile", equipments[i].Name, equipments[i].Description,
-                            equipments[i].MaintenanceCost, equipments[i].Distance);
+                    Console.WriteLine("{0,-15}{1,-15}{2,-25}{3,-35}{4,-15}{5,-15}", (i + 1), "Immobile", equipment.Name, equipment.Description,
+                            equipment.MaintenanceCost, equipment.Distance);
                     i++;
                 }
             }
