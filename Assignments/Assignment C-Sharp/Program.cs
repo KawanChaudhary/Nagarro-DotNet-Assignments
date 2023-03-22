@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assignment_C_Sharp.Assignments.Assignment6;
+using Assignment_C_Sharp.Assignments.Assignment7;
 
 namespace Assignments
 {
@@ -45,15 +47,23 @@ namespace Assignments
                         break;
                     case 3:
                         Console.WriteLine("---- Assignmnet 3 ----");
-                        Assignment3 assignmnet3 = new Assignment3();
+                        Assignment3 assignment3 = new Assignment3();
                         break;
                     case 4:
                         Console.WriteLine("---- Assignmnet 4 ----");
-                        Assignment4 assignmnet4 = new Assignment4();
+                        Assignment4 assignment4 = new Assignment4();
                         break;
                     case 5:
-                        Console.WriteLine("---- Assignmnet 4 ----");
-                        Assignment5 assignmnet5 = new Assignment5();
+                        Console.WriteLine("---- Assignmnet 5 ----");
+                        Assignment5 assignment5 = new Assignment5();
+                        break;
+                    case 6:
+                        Console.WriteLine("---- Assignmnet 6 ----");
+                        Assignment6 assignment6 = new Assignment6();
+                        break;
+                    case 7:
+                        Console.WriteLine("---- Assignmnet 7 ----");
+                        Assignment7 assignment7 = new Assignment7();
                         break;
                     default:
                         Console.WriteLine("Sorry, not yet done. :(");

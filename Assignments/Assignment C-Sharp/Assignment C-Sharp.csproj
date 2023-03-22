@@ -75,15 +75,33 @@
     <Compile Include="Assignments\Assignment5\Assignment5.cs" />
     <Compile Include="Assignments\Assignment5\Exercise11\EM_Exercise11.cs" />
     <Compile Include="Assignments\Assignment5\Exercise11\ExternsionMethod.cs" />
+    <Compile Include="Assignments\Assignment5\Exercise12\Exercise12_LambdaAndDelegates.cs" />
+    <Compile Include="Assignments\Assignment6\Assignment6.cs" />
+    <Compile Include="Assignments\Assignment6\Exercise14\Inventory.cs" />
+    <Compile Include="Assignments\Assignment6\Exercise14\OOPS_Exercise14.cs" />
+    <Compile Include="Assignments\Assignment6\Exercise14\Product.cs" />
+    <Compile Include="Assignments\Assignment6\Exercise15\Event_Exercise15.cs" />
+    <Compile Include="Assignments\Assignment7\Assignment7.cs" />
+    <Compile Include="Assignments\Assignment7\Exercise16\File_Exercise16.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".editorconfig" />
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assignments\Assignment5\Exercise12\" />
     <Folder Include="Assignments\Assignment5\Exercise13\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assignments\Assignment7\Exercise16\Files\File4.txt" />
+    <Content Include="Assignments\Assignment7\Exercise16\Files\file1.txt" />
+    <Content Include="Assignments\Assignment7\Exercise16\Files\File2.txt" />
+    <Content Include="Assignments\Assignment7\Exercise16\Files\File3.txt" />
+    <Content Include="Assignments\Assignment7\Exercise16\Files\File5.txt" />
+    <Content Include="Assignments\Assignment7\Exercise16\Files\File6.txt" />
+    <Content Include="Assignments\Assignment7\Exercise16\Files\HTMLPage1.html" />
+    <Content Include="Assignments\Assignment7\Exercise16\Files\JavaScript1.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

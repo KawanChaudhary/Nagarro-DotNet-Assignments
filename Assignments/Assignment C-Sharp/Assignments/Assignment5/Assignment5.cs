@@ -1,4 +1,5 @@
 ﻿using Assignment_C_Sharp.Assignments.Assignment5.Exercise11;
+using Assignment_C_Sharp.Assignments.Assignment5.Exercise12;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,12 +23,17 @@ namespace Assignment_C_Sharp.Assignments.Assignment5
                 case 11:
                     // Exercise 11
                     Console.WriteLine("---- Exercise 6 ----");
-                    EM_Exercise11 obj = new EM_Exercise11();
+                    EM_Exercise11 exercise11 = new EM_Exercise11();
                     break;
-                /*case 12:
+                case 12:
                     // Exercise 12
-                    Console.WriteLine("---- Exercise  7----");
-                    break;*/
+                    Console.WriteLine("---- Exercise  12 ----");
+                    Exercise12_LambdaAndDelegates exercise12 = new Exercise12_LambdaAndDelegates();
+                    break;
+                case 13:
+                    //Exercise 13
+                    Console.WriteLine("---- Exercise 13 ----");
+                    break;
                 default:
                     Console.WriteLine("Invalid input.");
                     break;
