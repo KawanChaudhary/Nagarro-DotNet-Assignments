@@ -23,12 +23,12 @@ namespace Assignment_C_Sharp.Assignments.Assignment7
                     Console.WriteLine("\n---- Exercise 16 ----");
                     File_Exercise16 exercise16 = new File_Exercise16();
                     break;
-                    /*case 17:
-                        // Exercise 17
-                        Console.WriteLine("\n---- Exercise  15 ----");
-
+                case 17:
+                    // Exercise 17
+                    Console.WriteLine("\n---- Exercise  15 ----");
+                    Exception_Exercise17 exercise17 = new Exception_Exercise17();
                     break;
-                    */
+
                 default:
                     Console.WriteLine("Invalid input.");
                     break;

@@ -1,5 +1,6 @@
 ﻿using Assignment_C_Sharp.Assignments.Assignment5.Exercise11;
 using Assignment_C_Sharp.Assignments.Assignment5.Exercise12;
+using Assignment_C_Sharp.Assignments.Assignment5.Exercise13;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment5
                 case 13:
                     //Exercise 13
                     Console.WriteLine("---- Exercise 13 ----");
+                    Delegates_Exercise13 exercise13 = new Delegates_Exercise13();
                     break;
                 default:
                     Console.WriteLine("Invalid input.");

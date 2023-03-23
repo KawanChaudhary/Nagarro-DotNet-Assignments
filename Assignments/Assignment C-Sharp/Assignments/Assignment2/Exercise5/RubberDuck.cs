@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Assignment_C_Sharp.Assignments.Assignment2.Exercise5
 {
-    class RedheadDuck : Duck
+    class RubberDuck : Duck
     {
-        public RedheadDuck(double weight, int totalWings, DuckType newDuck) : base(weight, totalWings, newDuck)
+        public RubberDuck(double weight, int totalWings, DuckType newDuck) : base(weight, totalWings, newDuck)
         {
 
         }
         public override void ShowDuckDetails()
         {
             base.ShowDuckDetails();
-            Console.WriteLine("\nRedhead duck fly slow and quack mild.");
+            Console.WriteLine("\nRubber duck don't fly and squeak.");
         }
     }
 }

@@ -12,7 +12,6 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
     }
     class Duck: IShowEveryDuckDetail
     {
-
         private double weightOfDuck;
         private int wingsOfDuck;
         private DuckType typeOfDuck;

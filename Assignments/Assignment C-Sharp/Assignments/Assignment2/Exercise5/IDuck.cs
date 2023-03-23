@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Assignment_C_Sharp.Assignments.Assignment2.Exercise5
 {
-    class Duck: ShowEveryDetail
+    interface IShowEveryDetail
+    {
+        void ShowDuckDetails();
+    }
+    class Duck: IShowEveryDetail
     {
         private double weightOfDuck;
         private int wingsOfDuck;

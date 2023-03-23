@@ -50,21 +50,18 @@
     <Compile Include="Assignments\Assignment2\Exercise4\Mobile.cs" />
     <Compile Include="Assignments\Assignment2\Exercise4\Equipment.cs" />
     <Compile Include="Assignments\Assignment2\Exercise4\Exercise4.cs" />
-    <Compile Include="Assignments\Assignment2\Exercise5\Duck.cs" />
+    <Compile Include="Assignments\Assignment2\Exercise5\IDuck.cs" />
     <Compile Include="Assignments\Assignment2\Exercise5\Exercise5.cs" />
-    <Compile Include="Assignments\Assignment2\Exercise5\interface.cs" />
     <Compile Include="Assignments\Assignment2\Exercise5\MallhardDuck.cs" />
-    <Compile Include="Assignments\Assignment2\Exercise5\RedheadDuck.cs" />
     <Compile Include="Assignments\Assignment2\Exercise5\RubberDuck.cs" />
+    <Compile Include="Assignments\Assignment2\Exercise5\RedheadDuck.cs" />
     <Compile Include="Assignments\Assignment3\Assignment3.cs" />
-    <Compile Include="Assignments\Assignment3\Exercise6\abstractClass.cs" />
     <Compile Include="Assignments\Assignment3\Exercise6\Equipment.cs" />
     <Compile Include="Assignments\Assignment3\Exercise6\Immobile.cs" />
     <Compile Include="Assignments\Assignment3\Exercise6\Mobile.cs" />
     <Compile Include="Assignments\Assignment3\Exercise6\OOPS_Exercise6.cs" />
     <Compile Include="Assignments\Assignment3\Exercise7\Duck.cs" />
     <Compile Include="Assignments\Assignment3\Exercise7\OOPS_Exercise7.cs" />
-    <Compile Include="Assignments\Assignment3\Exercise7\interface.cs" />
     <Compile Include="Assignments\Assignment3\Exercise7\MallhardDuck.cs" />
     <Compile Include="Assignments\Assignment3\Exercise7\RubberDuck.cs" />
     <Compile Include="Assignments\Assignment3\Exercise7\RedheadDuck.cs" />
@@ -76,6 +73,8 @@
     <Compile Include="Assignments\Assignment5\Exercise11\EM_Exercise11.cs" />
     <Compile Include="Assignments\Assignment5\Exercise11\ExternsionMethod.cs" />
     <Compile Include="Assignments\Assignment5\Exercise12\Exercise12_LambdaAndDelegates.cs" />
+    <Compile Include="Assignments\Assignment5\Exercise13\CustomExtensionMethod.cs" />
+    <Compile Include="Assignments\Assignment5\Exercise13\Delegates_Exercise13.cs" />
     <Compile Include="Assignments\Assignment6\Assignment6.cs" />
     <Compile Include="Assignments\Assignment6\Exercise14\Inventory.cs" />
     <Compile Include="Assignments\Assignment6\Exercise14\OOPS_Exercise14.cs" />
@@ -83,6 +82,8 @@
     <Compile Include="Assignments\Assignment6\Exercise15\Event_Exercise15.cs" />
     <Compile Include="Assignments\Assignment7\Assignment7.cs" />
     <Compile Include="Assignments\Assignment7\Exercise16\File_Exercise16.cs" />
+    <Compile Include="Assignments\Assignment7\Exercise17\InvalidNumberException.cs" />
+    <Compile Include="Assignments\Assignment7\Exercise17\Exception_Exercise17.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -90,9 +91,7 @@
     <None Include=".editorconfig" />
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assignments\Assignment5\Exercise13\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Assignments\Assignment7\Exercise16\Files\File4.txt" />
     <Content Include="Assignments\Assignment7\Exercise16\Files\file1.txt" />

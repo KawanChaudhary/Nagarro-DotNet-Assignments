@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace Assignment_C_Sharp.Assignments.Assignment2.Exercise5
 {
     // Exercise 5 Code
-
     enum DuckType
     {
         RubberDuck,
@@ -19,9 +18,9 @@ namespace Assignment_C_Sharp.Assignments.Assignment2.Exercise5
     {
         // Exercise 5
 
-        // Rubber Duck
         public OOPS_Exercise5()
         {
+            // Rubber Duck
             RubberDuck duck1 = new RubberDuck(12.34, 2, DuckType.RubberDuck);
             duck1.ShowDuckDetails();
 
