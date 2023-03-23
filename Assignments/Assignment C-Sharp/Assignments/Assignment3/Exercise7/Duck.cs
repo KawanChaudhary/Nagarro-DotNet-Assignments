@@ -27,7 +27,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
         public virtual void ShowDuckDetails()
         {
 
-            if (typeOfDuck == DuckType.RubberDuck)
+            /*if (typeOfDuck == DuckType.RubberDuck)
             {
                 Console.WriteLine("\n\nRubber DucK:");
             }
@@ -38,7 +38,9 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
             else if (typeOfDuck == DuckType.MallhardDuck)
             {
                 Console.WriteLine("\n\nMallhard DucK:");
-            }
+            }*/
+
+            Console.WriteLine($"\n{this.typeOfDuck}");
 
             Console.WriteLine($"\nWeight of the duck: {this.weightOfDuck}");
             Console.WriteLine($"\nWings of the Duck: {this.wingsOfDuck}");

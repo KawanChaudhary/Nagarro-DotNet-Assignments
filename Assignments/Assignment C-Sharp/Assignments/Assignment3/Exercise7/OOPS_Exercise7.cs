@@ -99,7 +99,6 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
             }
             Console.WriteLine();
         }
-
         private void DucksInIncreasingWeight(List<Duck> ducks)
         {
             if(ducks.Any())
@@ -117,7 +116,6 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
             }
             Console.WriteLine();
         }
-
         private void DucksInIncreasingNoOfWings(List<Duck> ducks)
         {
             if (ducks.Any())
@@ -135,7 +133,6 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
             }
             Console.WriteLine();
         }
-
         private void AnyDuckDetails(List<Duck> ducks)
         {
             if (ducks.Any())

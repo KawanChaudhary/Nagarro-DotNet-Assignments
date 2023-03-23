@@ -6,15 +6,27 @@ using System.Threading.Tasks;
 
 namespace Assignment_C_Sharp.Assignments.Assignment2.Exercise5
 {
-    class MallhardDuck : Duck
+    class MallhardDuck : IDuck
     {
-        public MallhardDuck(double weight, int totalWings, DuckType newDuck) : base(weight, totalWings, newDuck)
-        {
+        private double weightOfDuck;
+        private int wingsOfDuck;
+        private DuckType typeOfDuck;
 
-        }
-        public override void ShowDuckDetails()
+
+        // Constructor
+        public MallhardDuck(double weightOfDuck, int wingsOfDuck, DuckType typeOfDuck)
         {
-            base.ShowDuckDetails();
+            this.weightOfDuck = weightOfDuck;
+            this.wingsOfDuck = wingsOfDuck;
+            this.typeOfDuck = typeOfDuck;
+        }
+
+        public void ShowDuckDetails()
+        {
+            Console.WriteLine("\n\nMallhard DucK:");
+
+            Console.WriteLine($"\nWeight of the duck: {this.weightOfDuck}");
+            Console.WriteLine($"\nWings of the Duck: {this.wingsOfDuck}");
             Console.WriteLine("\nMallhard duck fly fast and quack loud.");
         }
     }
