@@ -60,7 +60,7 @@
     <Compile Include="Assignments\Assignment3\Exercise6\Immobile.cs" />
     <Compile Include="Assignments\Assignment3\Exercise6\Mobile.cs" />
     <Compile Include="Assignments\Assignment3\Exercise6\OOPS_Exercise6.cs" />
-    <Compile Include="Assignments\Assignment3\Exercise7\Duck.cs" />
+    <Compile Include="Assignments\Assignment3\Exercise7\IDuck.cs" />
     <Compile Include="Assignments\Assignment3\Exercise7\OOPS_Exercise7.cs" />
     <Compile Include="Assignments\Assignment3\Exercise7\MallhardDuck.cs" />
     <Compile Include="Assignments\Assignment3\Exercise7\RubberDuck.cs" />
@@ -69,6 +69,9 @@
     <Compile Include="Assignments\Assignment4\Exercise8\Collection_Exercise8.cs" />
     <Compile Include="Assignments\Assignment4\Exercise8\Employee.cs" />
     <Compile Include="Assignments\Assignment4\Exercise8\PriorityQueue.cs" />
+    <Compile Include="Assignments\Assignment4\Exercise9\Collection_Exercise9.cs" />
+    <Compile Include="Assignments\Assignment4\Exercise9\Employee.cs" />
+    <Compile Include="Assignments\Assignment4\Exercise9\PriorityQueue.cs" />
     <Compile Include="Assignments\Assignment5\Assignment5.cs" />
     <Compile Include="Assignments\Assignment5\Exercise11\EM_Exercise11.cs" />
     <Compile Include="Assignments\Assignment5\Exercise11\ExternsionMethod.cs" />

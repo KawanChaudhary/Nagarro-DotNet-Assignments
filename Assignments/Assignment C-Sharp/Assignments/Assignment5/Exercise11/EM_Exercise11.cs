@@ -24,7 +24,15 @@ namespace Assignment_C_Sharp.Assignments.Assignment5.Exercise11
                 num.IsOdd();
                 Console.Write("Prime: ");
                 num.IsPrime();
-                num.IsDivisible();
+
+                againDivide:  Console.Write("\nEnter a number to divide {0}: ", num);
+                int div = -1;
+                if (!int.TryParse(Console.ReadLine(), out div)){
+                    Console.WriteLine("Invalid Input");
+                    goto againDivide;
+                }
+
+                num.IsDivisible(div);
             }
         }
 

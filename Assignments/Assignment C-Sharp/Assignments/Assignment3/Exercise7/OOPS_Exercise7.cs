@@ -15,7 +15,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
 
     class OOPS_Exercise7
     {
-        private void AddDuck(List<Duck> ducks)
+        private void AddDuck(List<IDuck> ducks)
         {
             Console.Write("\n0 for Rubber Duck" +
                 "\n1 for Mallhard Duck" +
@@ -61,7 +61,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
                 Console.WriteLine("\nA new duck details has been added.\n");
             }
         }
-        private void DeleteDuck(List<Duck> ducks)
+        private void DeleteDuck(List<IDuck> ducks)
         {
             if (ducks.Any())
             {
@@ -83,7 +83,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
                 Console.WriteLine("\nYou have not added ducks yet.\n");
             }
         }
-        private void ShowAllDucks(List<Duck> ducks)
+        private void ShowAllDucks(List<IDuck> ducks)
         {
             if (ducks.Any())
             {
@@ -99,32 +99,30 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
             }
             Console.WriteLine();
         }
-        private void DucksInIncreasingWeight(List<Duck> ducks)
-        {
-            if(ducks.Any())
-            {
-                List<Duck> copyOfDuck = new List<Duck>();
-                copyOfDuck.AddRange(ducks);
-
-                copyOfDuck.Sort((x, y) => x.Weight.CompareTo(y.Weight));
-                ShowAllDucks(copyOfDuck);
-
-            }
-            else
-            {
-                Console.WriteLine("\nYou have not added ducks yet.");
-            }
-            Console.WriteLine();
-        }
-        private void DucksInIncreasingNoOfWings(List<Duck> ducks)
+        private void ShowAllDucks(IEnumerable<IDuck> ducks)
         {
             if (ducks.Any())
             {
-                List<Duck> copyOfDuck = new List<Duck>();
-                copyOfDuck.AddRange(ducks);
-
-                copyOfDuck.Sort((x, y) => x.Wings.CompareTo(y.Wings));
-                ShowAllDucks(copyOfDuck);
+                int i = 1;
+                Console.WriteLine("\n{0,-15}{1,-25}{2,-15}{3,-15}", "No", "Type of Duck", "Weight", "Wings");
+                foreach(var duck in ducks)
+                {
+                    Console.WriteLine("\n{0,-15}{1,-25}{2,-15}{3,-15}", (i + 1), duck.Type, duck.Weight, duck.Wings);
+                    i++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nYou have not added ducks yet.");
+            }
+            Console.WriteLine();
+        }
+        private void DucksInIncreasingWeight(List<IDuck> ducks)
+        {
+            if(ducks.Any())
+            {
+                IEnumerable<IDuck> orderByWeight = from duck in ducks orderby duck.Weight select duck;
+                ShowAllDucks(orderByWeight);
 
             }
             else
@@ -133,7 +131,21 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
             }
             Console.WriteLine();
         }
-        private void AnyDuckDetails(List<Duck> ducks)
+        private void DucksInIncreasingNoOfWings(List<IDuck> ducks)
+        {
+            if (ducks.Any())
+            {
+                IEnumerable<IDuck> orderByWings = from duck in ducks orderby duck.Wings select duck;
+                ShowAllDucks(orderByWings);
+
+            }
+            else
+            {
+                Console.WriteLine("\nYou have not added ducks yet.");
+            }
+            Console.WriteLine();
+        }
+        private void AnyDuckDetails(List<IDuck> ducks)
         {
             if (ducks.Any())
             {
@@ -158,7 +170,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
 
         public OOPS_Exercise7()
         {
-            List<Duck> ducks = new List<Duck>();
+            List<IDuck> ducks = new List<IDuck>();
             int choice = -1;
             while (choice != 0)
             {

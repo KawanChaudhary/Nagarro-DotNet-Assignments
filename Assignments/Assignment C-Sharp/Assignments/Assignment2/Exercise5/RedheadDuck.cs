@@ -12,7 +12,6 @@ namespace Assignment_C_Sharp.Assignments.Assignment2.Exercise5
         private int wingsOfDuck;
         private DuckType typeOfDuck;
 
-
         // Constructor
         public RedheadDuck(double weightOfDuck, int wingsOfDuck, DuckType typeOfDuck)
         {
@@ -28,6 +27,23 @@ namespace Assignment_C_Sharp.Assignments.Assignment2.Exercise5
             Console.WriteLine($"\nWeight of the duck: {this.weightOfDuck}");
             Console.WriteLine($"\nWings of the Duck: {this.wingsOfDuck}");
             Console.WriteLine("\nRedhead duck fly slow and quack mild.");
+        }
+        public DuckType Type
+        {
+            get { return typeOfDuck; }
+            set { typeOfDuck = value; }
+        }
+
+        public double Weight
+        {
+            get { return weightOfDuck; }
+            set { weightOfDuck = value; }
+        }
+
+        public int Wings
+        {
+            get { return wingsOfDuck; }
+            set { wingsOfDuck = value; }
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment_C_Sharp.Assignments.Assignment4.Exercise8
+namespace Assignment_C_Sharp.Assignments.Assignment4.Exercise9
 {
     class PriorityQueue<T> where T : IComparable<T>
     {

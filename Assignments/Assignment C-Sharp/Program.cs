@@ -3,12 +3,9 @@ using Assignment_C_Sharp.Assignments.Assignment2;
 using Assignment_C_Sharp.Assignments.Assignmnet3;
 using Assignment_C_Sharp.Assignments.Assignment4;
 using Assignment_C_Sharp.Assignments.Assignment5;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Assignment_C_Sharp.Assignments.Assignment6;
 using Assignment_C_Sharp.Assignments.Assignment7;
+using System;
 
 namespace Assignments
 {

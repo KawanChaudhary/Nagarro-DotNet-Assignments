@@ -6,16 +6,46 @@ using System.Threading.Tasks;
 
 namespace Assignment_C_Sharp.Assignments.Assignment3.Exercise7
 {
-    class RubberDuck : Duck
+    class RubberDuck : IDuck
     {
-        public RubberDuck(double weight, int totalWings, DuckType newDuck) : base(weight, totalWings, newDuck)
-        {
+        private double weightOfDuck;
+        private int wingsOfDuck;
+        private DuckType typeOfDuck;
 
-        }
-        public override void ShowDuckDetails()
+        // Constructor
+        public RubberDuck(double weightOfDuck, int wingsOfDuck, DuckType typeOfDuck)
         {
-            base.ShowDuckDetails();
+            this.weightOfDuck = weightOfDuck;
+            this.wingsOfDuck = wingsOfDuck;
+            this.typeOfDuck = typeOfDuck;
+        }
+
+        public void ShowDuckDetails()
+        {
+            Console.WriteLine("\n\nRubber DucK:");
+
+            Console.WriteLine($"\nWeight of the duck: {this.weightOfDuck}");
+            Console.WriteLine($"\nWings of the Duck: {this.wingsOfDuck}");
             Console.WriteLine("\nRubber duck don't fly and squeak.");
         }
+
+        public DuckType Type
+        {
+            get { return typeOfDuck; }
+            set { typeOfDuck = value; }
+        }
+
+        public double Weight
+        {
+            get { return weightOfDuck; }
+            set { weightOfDuck = value; }
+        }
+
+        public int Wings
+        {
+            get { return wingsOfDuck; }
+            set { wingsOfDuck = value; }
+        }
+
     }
 }

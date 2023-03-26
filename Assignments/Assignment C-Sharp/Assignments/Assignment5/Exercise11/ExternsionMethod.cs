@@ -48,19 +48,11 @@ namespace Assignment_C_Sharp.Assignments.Assignment5.Exercise11
 
         }
 
-        public static void IsDivisible(this int num)
+        public static void IsDivisible(this int num, int div)
         {
-            Console.Write($"Enter a number to divide {num}: ");
-            int divider = -1;
-            if(!int.TryParse(Console.ReadLine(), out divider) || divider == 0)
-            {
-                Console.WriteLine("Enter a valid number");
-            }
-            else
-            {
-                Console.Write($"{num} is divisble by {divider}: ");
-                Console.WriteLine(num % divider == 0 ? "Yes" : "No");
-            }
+            
+             Console.Write($"Is {num} divisble by {div}? : ");
+             Console.WriteLine(num % div == 0 ? "Yes" : "No");
         }
     }
 }
