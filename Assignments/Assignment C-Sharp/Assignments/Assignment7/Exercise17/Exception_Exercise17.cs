@@ -33,7 +33,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment7.Exercise17
                 try
                 {
 
-                    if (!int.TryParse(Console.ReadLine(), out number) && number <= 0 && number >= 6)
+                    if (!int.TryParse(Console.ReadLine(), out number) || number <= 0 || number >= 6)
                     {
                         throw new InvalidNumberException(string.Format("Error: enter any integer number from {0}-{1}!", 1, 5));
                     }
