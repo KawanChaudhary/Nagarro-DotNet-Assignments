@@ -81,6 +81,7 @@
     <Compile Include="Assignments\Assignment6\Assignment6.cs" />
     <Compile Include="Assignments\Assignment6\Exercise14\Inventory.cs" />
     <Compile Include="Assignments\Assignment6\Exercise14\OOPS_Exercise14.cs" />
+    <Compile Include="Assignments\Assignment6\Exercise14\PriceChangedEventArgs.cs" />
     <Compile Include="Assignments\Assignment6\Exercise14\Product.cs" />
     <Compile Include="Assignments\Assignment6\Exercise15\Event_Exercise15.cs" />
     <Compile Include="Assignments\Assignment7\Assignment7.cs" />

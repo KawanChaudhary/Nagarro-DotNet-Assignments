@@ -8,6 +8,9 @@ namespace Assignment_C_Sharp.Assignments.Assignment6.Exercise14
 {
     class Product : IEquatable<Product>
     {
+        public event EventHandler ChangeDefectiveness;
+        public event EventHandler<PriceChangedEvent> ChangePrice;
+
         private int id;
         private int price;
         private bool isDefective;
@@ -28,24 +31,6 @@ namespace Assignment_C_Sharp.Assignments.Assignment6.Exercise14
             }
         }
 
-        //Overridding - System.Object.Equals 
-        public override bool Equals(System.Object obj)
-        {
-            if (obj == null)
-            {
-                return false;
-            }
-
-            if (!(obj is Product productObj))
-            {
-                return false;
-            }
-            else
-            {
-                return this.Equals(productObj);
-            }
-        }
-
         public Product(int id, int price, bool isDefective)
         {
             this.id = id;
@@ -60,12 +45,21 @@ namespace Assignment_C_Sharp.Assignments.Assignment6.Exercise14
         public int Price
         {
             get { return price; }
-            set { price = value; }
+            set
+            {
+                PriceChangedEvent e = new PriceChangedEvent(value);
+                price = value;
+                ChangePrice(this, e);
+            }
         }
         public bool IsDefective
         {
             get { return isDefective; }
-            set { isDefective = value; }
+            set
+            {
+                isDefective = value;
+                ChangeDefectiveness(this, null);
+            }
         }
     }
 }

@@ -8,7 +8,22 @@ namespace Assignment_C_Sharp.Assignments.Assignment6.Exercise14
 {
     class Inventory
     {
-        private void CreateProduct(Dictionary<Product, int> products)
+        public Dictionary<Product, int> products { get; set; }
+
+        private void OnChangeDefectiveness(object sender, EventArgs e)
+        {
+            Product p = (Product)sender;
+            Console.WriteLine($"\nProduct id: {p.Id} has been removed.\n");
+            products.Remove(p);
+        }
+
+        private void OnChangePrice(object sender, PriceChangedEvent e)
+        {
+            Product p = (Product)sender;
+            Console.WriteLine($"\nProduct id: {p.Id} price has been updated.\n");
+        }
+
+        private void CreateProduct()
         {
             int id = (new Random()).Next(1000, 10000);
             int price = (new Random()).Next(10, 100);
@@ -16,30 +31,34 @@ namespace Assignment_C_Sharp.Assignments.Assignment6.Exercise14
             bool isDefective = Convert.ToBoolean((new Random()).Next(0, 1));
             Console.WriteLine("The product ID: {0}", id);
             Console.WriteLine("The product price: {0}", price);
-            Console.WriteLine("Enter the product quantities: {0}", quantity);
+            Console.WriteLine("Enter the product quantity: {0}", quantity);
             Console.Write("Is this product defective? : {0}", isDefective);
 
             Product p = new Product(id, price, isDefective);
-            if (!isDefective)
+            if (!p.IsDefective)
             {
-                products.Add(p, quantity);
+                if (products.ContainsKey(p))
+                    products[p] += quantity;
+                else
+                    products.Add(p, quantity);
+                p.ChangeDefectiveness += new EventHandler(OnChangeDefectiveness);
+                p.ChangePrice += new EventHandler<PriceChangedEvent>(OnChangePrice);
                 Console.WriteLine("\nA new product has been added.\n");
             }
             else
             {
-                products.Add(p, 0);
                 Console.WriteLine("\nProduct is Defective\n");
             }
         }
 
-        private void RemoveProduct(Dictionary<Product, int> products)
+        private void RemoveProduct()
         {
             if(!products.Any())
             {
                 Console.WriteLine("\nNo products has been added yet.\n");
                 return;
             }
-            ShowAllProducts(products);
+            ShowAllProducts();
             Console.Write("Enter the product ID to remove: ");
             int id = int.Parse(Console.ReadLine());
             Product selectedProduct = null;
@@ -62,14 +81,14 @@ namespace Assignment_C_Sharp.Assignments.Assignment6.Exercise14
             }
         }
         
-        private void UpdateProductQuantity(Dictionary<Product, int> products)
+        private void UpdateProductQuantity()
         {
             if (!products.Any())
             {
                 Console.WriteLine("\nNo products has been added yet.\n");
                 return;
             }
-            ShowAllProducts(products);
+            ShowAllProducts();
             Console.Write("Enter the product ID to update product quantity: ");
             int id = int.Parse(Console.ReadLine());
             Product selectedProduct = null;
@@ -94,7 +113,7 @@ namespace Assignment_C_Sharp.Assignments.Assignment6.Exercise14
             }
         }
 
-        private void TotalValue(Dictionary<Product, int> products)
+        private void TotalValue()
         {
             int total = 0;
             foreach (var product in products)
@@ -103,8 +122,8 @@ namespace Assignment_C_Sharp.Assignments.Assignment6.Exercise14
             }
             Console.WriteLine("The total value of the inventory: {0}\n", total);
         }
-
-        private void ShowAllProducts(Dictionary<Product, int> products)
+            
+        private void ShowAllProducts()
         {
             if (products.Any())
             {
@@ -122,9 +141,69 @@ namespace Assignment_C_Sharp.Assignments.Assignment6.Exercise14
             Console.WriteLine();
         }
 
+        private void UpdateProductPrice()
+        {
+            if (!products.Any())
+            {
+                Console.WriteLine("\nNo products has been added yet.\n");
+                return;
+            }
+            ShowAllProducts();
+            Console.Write("Enter the product ID to update product price: ");
+            int id = int.Parse(Console.ReadLine());
+            Product selectedProduct = null;
+            foreach (var product in products)
+            {
+                if (product.Key.Id == id)
+                {
+                    selectedProduct = product.Key;
+                    break;
+                }
+            }
+            if (selectedProduct != null)
+            {
+                Console.Write("Enter a new product price: ");
+                int value = int.Parse(Console.ReadLine());
+                selectedProduct.Price = value;
+            }
+            else
+            {
+                Console.WriteLine("\nA product does not exist.\n");
+            }
+        }
+
+        private void UpdateDefectiveness()
+        {
+            if (!products.Any())
+            {
+                Console.WriteLine("\nNo products has been added yet.\n");
+                return;
+            }
+            ShowAllProducts();
+            Console.Write("Enter the product ID to update defectivenes: ");
+            int id = int.Parse(Console.ReadLine());
+            Product selectedProduct = null;
+            foreach (var product in products)
+            {
+                if (product.Key.Id == id)
+                {
+                    selectedProduct = product.Key;
+                    break;
+                }
+            }
+            if (selectedProduct != null)
+            {
+                selectedProduct.IsDefective = false;
+            }
+            else
+            {
+                Console.WriteLine("\nA product does not exist.\n");
+            }
+        }
+
         public Inventory()
         {
-            Dictionary<Product, int> products = new Dictionary<Product, int>();
+            products = new Dictionary<Product, int>();
 
             int ch = -1;
             while (ch != 0)
@@ -132,8 +211,10 @@ namespace Assignment_C_Sharp.Assignments.Assignment6.Exercise14
                 Console.WriteLine("1. Add Product");
                 Console.WriteLine("2. Remove Product");
                 Console.WriteLine("3. Update Product Quantity");
-                Console.WriteLine("4. Show All Products");
-                Console.WriteLine("5. Display total value of the inventory");
+                Console.WriteLine("4. Update Product Price");
+                Console.WriteLine("5. Update Product Defectiveness");
+                Console.WriteLine("6. Show All products");
+                Console.WriteLine("7. Display total value of the inventory");
                 Console.WriteLine("0. Exit");
                 Console.Write("Your choice : ");
                 ch = int.Parse(Console.ReadLine());
@@ -141,19 +222,25 @@ namespace Assignment_C_Sharp.Assignments.Assignment6.Exercise14
                 switch (ch)
                 {
                     case 1:
-                        CreateProduct(products);
+                        CreateProduct();
                         break;
                     case 2:
-                        RemoveProduct(products);
+                        RemoveProduct();
                         break;
                     case 3:
-                        UpdateProductQuantity(products);
+                        UpdateProductQuantity();
                         break;
                     case 4:
-                        ShowAllProducts(products);
+                        UpdateProductPrice();
                         break;
                     case 5:
-                        TotalValue(products);
+                        UpdateDefectiveness();
+                        break;
+                    case 6:
+                        ShowAllProducts();
+                        break;
+                    case 7:
+                        TotalValue();
                         break;
                     case 0:
                         //exit
