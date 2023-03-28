@@ -66,6 +66,8 @@
     <Compile Include="Assignments\Assignment3\Exercise7\RubberDuck.cs" />
     <Compile Include="Assignments\Assignment3\Exercise7\RedheadDuck.cs" />
     <Compile Include="Assignments\Assignment4\Assignment4.cs" />
+    <Compile Include="Assignments\Assignment4\Exercise10\Employee.cs" />
+    <Compile Include="Assignments\Assignment4\Exercise10\PriorityQueue.cs" />
     <Compile Include="Assignments\Assignment4\Exercise8\Collection_Exercise8.cs" />
     <Compile Include="Assignments\Assignment4\Exercise8\Employee.cs" />
     <Compile Include="Assignments\Assignment4\Exercise8\PriorityQueue.cs" />
