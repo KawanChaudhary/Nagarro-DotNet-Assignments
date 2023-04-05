@@ -8,7 +8,7 @@ Display the number of records in the [SalesPerson] table
 --SELECT COUNT(*) FROM Sales.SalesPerson;
 
 /* 2 
-Select both the FirstName and LastName of records from the Person table where the FirstName begins with the letter ‘B’.
+Select both the FirstName and LastName of records from the Person table where the FirstName begins with the letter â€˜Bâ€™.
 */
 
 -- SELECT * FROM Person.Person ORDER BY FirstName ASC;
@@ -52,8 +52,8 @@ SELECT Description, ISNULL(MaxQty, 0.00) AS MAXQTY FROM Sales.SpecialOffer;
 
 
 /* 6 
-Display the overall Average of the [CurrencyRate].[AverageRate] values for the exchange rate ‘USD’ to ‘GBP’ 
-for the year 2005 i.e. FromCurrencyCode = ‘USD’ and ToCurrencyCode = ‘GBP’. 
+Display the overall Average of the [CurrencyRate].[AverageRate] values for the exchange rate â€˜USDâ€™ to â€˜GBPâ€™ 
+for the year 2005 i.e. FromCurrencyCode = â€˜USDâ€™ and ToCurrencyCode = â€˜GBPâ€™. 
 Note: The field [CurrencyRate].[AverageRate] is defined as 'Average exchange rate for the day.'
 */
 
@@ -69,12 +69,14 @@ AND YEAR(CurrencyRateDate) = 2005;
 
 
 /* 7
-Display the FirstName and LastName of records from the Person table where FirstName contains the letters ‘ss’. 
+Display the FirstName and LastName of records from the Person table where FirstName contains the letters â€˜ssâ€™. 
 Display an additional column with sequential numbers for each row returned beginning at integer 1.
 (Schema(s) involved: Person)
 */
 
-Select * FROM Person.Person;
+-- SELECT * FROM Person.Person;
+
+
 SELECT ROW_NUMBER() OVER(ORDER BY FirstName, LastName) AS '#Row', FirstName, LastName
 FROM Person.Person
 WHERE FirstName LIKE '%ss%';
@@ -84,7 +86,7 @@ WHERE FirstName LIKE '%ss%';
 /* 8
 Sales people receive various commission rates that belong to 1 of 4 bands. 
 (Schema(s) involved: Sales)
-Display the [SalesPersonID] with an additional column entitled ‘Commission Band’ 
+Display the [SalesPersonID] with an additional column entitled â€˜Commission Bandâ€™ 
 indicating the appropriate band as above.
 */
 
@@ -101,7 +103,7 @@ AS 'Commission Band'
 FROM Sales.SalesPerson;
 
 /* 9
-Display the managerial hierarchy from Ruth Ellerbrock (person type – EM) up to CEO Ken Sanchez. 
+Display the managerial hierarchy from Ruth Ellerbrock (person type â€“ EM) up to CEO Ken Sanchez. 
 Hint: use [uspGetEmployeeManagers] (Schema(s) involved: [Person], [HumanResources])
 */
 
