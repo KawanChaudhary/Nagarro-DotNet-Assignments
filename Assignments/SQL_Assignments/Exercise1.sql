@@ -62,17 +62,16 @@ Note: The field [CurrencyRate].[AverageRate] is defined as 'Average exchange rat
 --SELECT * FROM Sales.CurrencyRate WHERE ToCurrencyCode = 'GBP';
 --Select COUNT(AverageRate) AS AVG, SUM(AverageRate) AS SUM FROM Sales.CurrencyRate WHERE ToCurrencyCode = 'GBP';
 
-SELECT AVG(AverageRate) AS 'Average Exchange Rate for the day'
+SELECT AVG(AverageRate) AS 'Average Exchange Rate for the day', YEAR(CurrencyRateDate) AS 'Year'
 FROM Sales.CurrencyRate
 WHERE FromCurrencyCode = 'USD' 
 AND ToCurrencyCode = 'GBP' 
-AND YEAR(CurrencyRateDate) = 2005;
-
+AND YEAR(CurrencyRateDate) = 2011
+GROUP BY YEAR(CurrencyRateDate);
 
 
 /* 7
 Display the FirstName and LastName of records from the Person table where FirstName contains the letters ‘ss’. 
-Display the FirstName and LastName of records from the Person table where FirstName contains the letters ss. 
 Display an additional column with sequential numbers for each row returned beginning at integer 1.
 (Schema(s) involved: Person)
 */
@@ -84,13 +83,10 @@ SELECT ROW_NUMBER() OVER(ORDER BY FirstName, LastName) AS '#Row', FirstName, Las
 FROM Person.Person
 WHERE FirstName LIKE '%ss%';
 
-
-
 /* 8
 Sales people receive various commission rates that belong to 1 of 4 bands. 
 (Schema(s) involved: Sales)
 Display the [SalesPersonID] with an additional column entitled ‘Commission Band’ 
-Display the [SalesPersonID] with an additional column entitled 'Commission Band'
 indicating the appropriate band as above.
 */
 
@@ -113,12 +109,13 @@ Hint: use [uspGetEmployeeManagers] (Schema(s) involved: [Person], [HumanResource
 */
 
 --SELECT * FROM Person.Person;
-
-SELECT BusinessEntityID 
+DECLARE @ID int
+SELECT @ID = BusinessEntityID 
 FROM Person.Person 
 WHERE FirstName = 'Ruth' 
 AND LastName = 'Ellerbrock'
 AND PersonType = 'EM';
+EXEC dbo.uspGetEmployeeManagers @BusinessEntityID = @ID;
 
 /* 10
 Display the ProductId of the product with the largest stock level. 
