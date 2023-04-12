@@ -10,6 +10,9 @@ Exchange rates can be found in the Sales.CurrencyRate table.
 (Use AdventureWorks)
 */
 
+--SELECT TOP 10 * FROM Sales.SalesOrderDetail;
+--SELECT TOP 10 * FROM Sales.CurrencyRate;
+
 --SELECT SalesOrderID, ProductID, UnitPrice
 --FROM Sales.SalesOrderDetail 
 --WHERE SalesOrderID = 43661;
@@ -21,19 +24,15 @@ Exchange rates can be found in the Sales.CurrencyRate table.
 
 -- Function
 GO
-CREATE FUNCTION Sales.ufngetOrderDetails(@SalesOrderID int, @CurrencyCode nchar(3), @CurrencyRateDate dateTime)
+ALTER FUNCTION Sales.ufngetOrderDetails(@SalesOrderID int, @CurrencyCode nchar(3), @CurrencyRateDate dateTime)
 	RETURNS TABLE
 		AS
-		RETURN
-			With Items
-			AS (
-				SELECT * 
-				FROM Sales.SalesOrderDetail AS SOR
-				WHERE SOR.SalesOrderID = @SalesOrderID
-			)
+		RETURN			
 			SELECT IT.ProductID, IT.OrderQty, IT.UnitPrice, IT.UnitPrice * SCR.EndOfDayRate AS 'Converted Price'
-			FROM Items AS IT, Sales.CurrencyRate AS SCR
-			WHERE SCR.ToCurrencyCode = @CurrencyCode AND SCR.CurrencyRateDate = @CurrencyRateDate;
+			FROM Sales.SalesOrderDetail AS IT, Sales.CurrencyRate AS SCR
+			WHERE SCR.ToCurrencyCode = @CurrencyCode 
+			AND SCR.CurrencyRateDate = @CurrencyRateDate 
+			AND IT.SalesOrderID = @SalesOrderID;
 GO
 
---SELECT * FROM Sales.ufngetOrderDetails(43661, 'EUR', '2011-08-17 00:00:00.000');
+SELECT * FROM Sales.ufngetOrderDetails(43661, 'EUR', '2011-08-17 00:00:00.000');

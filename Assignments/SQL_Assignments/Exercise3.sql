@@ -6,13 +6,12 @@ Show the most recent five orders that were purchased from account numbers
 that have spent more than $70,000 with AdventureWorks.
 */
 
--- SELECT * FROM Sales.SalesOrderHeader;
 
-SELECT TOP 5 SalesOrderID, CustomerID, AccountNumber, OrderDate, SubTotal
+SELECT A.* FROM 
+(SELECT 
+ROW_NUMBER() OVER(PARTITION BY AccountNumber ORDER BY OrderDate DESC) AS 'Sequence',
+AccountNumber, SalesOrderID, CustomerID, OrderDate
 FROM Sales.SalesOrderHeader
-WHERE AccountNumber 
-IN (SELECT AccountNumber
-    FROM Sales.SalesOrderHeader
-	GROUP BY AccountNumber
-    HAVING SUM(SubTotal) > 70000
-);
+WHERE SubTotal > 70000) A 
+WHERE Sequence < 6
+ORDER BY AccountNumber;
