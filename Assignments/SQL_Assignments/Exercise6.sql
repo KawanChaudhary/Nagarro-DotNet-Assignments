@@ -8,7 +8,9 @@ Modify the above trigger to execute its check code only if the ListPrice column 
 --CONNECT TO DATABASE
 USE AdventureWorks2017;
 
---SELECT * FROM Production.Product;
+SELECT ProductId, ListPrice 
+FROM Production.Product
+WHERE ProductId = 822;
 
  --- Trigger
 
