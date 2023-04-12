@@ -12,11 +12,11 @@ Select BusinessEntityID, FirstName
 FROM Person.Person
 WHERE BusinessEntityID = 11;
 
---PROCEDURE
+-- PROCEDURE
 GO
 CREATE PROCEDURE Person.getNameByFilter
 	(
-		@ID int = 120
+		@ID int = -1
 	)
 	AS
 	BEGIN
