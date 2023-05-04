@@ -1,0 +1,90 @@
+﻿@model EventViewModel
+@{
+    ViewData["Title"] = "Add New Event";
+}
+
+<div class="container">
+    <h2 class="display-4 text-monospace text-muted">Add New Book Event</h2>
+    <hr class="hr" />
+    @if (ViewBag.IsSuccess == true)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulations</strong> You have added new event successfully. <br />
+            Click <a class="font-weight-bold" asp-controller="book" asp-action="getbookevent" asp-route-id="@ViewBag.EventId">here</a> to view the details
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+<form method="post" enctype="multipart/form-data" asp-action="addnewevent" asp-controller="book">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+    <div class="form-group">
+        <label asp-for="EventDetails.Title" class="control-label"></label>
+        <input asp-for="EventDetails.Title" class="form-control" />
+        <span asp-validation-for="EventDetails.Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EventDetails.Date" class="control-label"></label>
+        <input asp-for="EventDetails.Date" type="date" class="form-control" />
+        <span asp-validation-for="EventDetails.Date" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EventDetails.StartTime" class="control-label"></label>
+        <input asp-for="EventDetails.StartTime" type="time" class="form-control" />
+        <span asp-validation-for="EventDetails.StartTime" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EventDetails.Location" class="control-label"></label>
+        <input asp-for="EventDetails.Location" class="form-control" />
+        <span asp-validation-for="EventDetails.Location" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EventDetails.Description" class="control-label">Description <span class="font-weight-light font-italic">(Max. word limit 500)</span></label>
+        <textarea asp-for="EventDetails.Description" class="form-control"></textarea>
+        <span asp-validation-for="EventDetails.Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EventDetails.Duration" class="control-label"></label>
+        <input asp-for="EventDetails.Duration" min="1" class="form-control" />
+        <span asp-validation-for="EventDetails.Duration" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EventDetails.InviteByEmail" class="control-label"></label>
+        <input asp-for="EventDetails.InviteByEmail" class="form-control" />
+        <span asp-validation-for="EventDetails.InviteByEmail" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EventDetails.OtherDetails" class="control-label"></label>
+        <textarea asp-for="EventDetails.OtherDetails" class="form-control"></textarea>
+        <span asp-validation-for="EventDetails.OtherDetails" class="text-danger"></span>
+    </div>
+
+    <div class="row d-flex align-items-center ml-1 mb-2">
+        <div class="form-check mx-2">
+            <input asp-for="EventDetails.Type" class="form-check-input" type="radio" value="Public" checked>
+            <label asp-for="EventDetails.Type" class="form-check-label">Public</label>
+            <span asp-validation-for="EventDetails.Type" class="text-danger"></span>
+        </div>
+        <div class="form-check mx-2">
+            <input asp-for="EventDetails.Type" class="form-check-input" type="radio" value="Private">
+            <label asp-for="EventDetails.Type" class="form-check-label">Private</label>
+            <span asp-validation-for="EventDetails.Type" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Add Event" class="btn btn-success" />
+    </div>
+</form>
+</div>
+

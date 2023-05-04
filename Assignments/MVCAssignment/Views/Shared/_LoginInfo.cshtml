@@ -1,0 +1,29 @@
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signInManager
+@inject MVCAssignment.Repository.IInvitationRepository _invitationrepository
+@inject MVCAssignment.Repository.IBookEventRepository _bookEventRepository
+
+
+@if (_signInManager.IsSignedIn(User))
+{
+
+    <li class="nav-item dropdown d-block">
+       
+        <a class="nav-link dropdown-toggle text-dark" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Hello @(User.FindFirst("UserFirstName").Value )
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" asp-action="GetMyBookEvent" asp-controller="book">My Book Events</a>
+            <a class="dropdown-item" asp-controller="signin" asp-action="signout">Logout</a>
+        </div>
+    </li>
+}
+else
+{
+
+    <li class="nav-item mx-2">
+        <a class="btn btn-outline-success rounded" asp-area="" asp-controller="signin" asp-action="signin">Sign In</a>
+    </li>
+    <li class="nav-item">
+        <a class="btn btn-danger rounded" asp-area="" asp-controller="signup" asp-action="signup">Sign Up</a>
+    </li>
+}
