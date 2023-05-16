@@ -1,0 +1,9 @@
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.csproj.AssemblyReference.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.AssemblyInfoInputs.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.AssemblyInfo.cs
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.csproj.CoreCompileInputs.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.RazorAssemblyInfo.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.RazorAssemblyInfo.cs

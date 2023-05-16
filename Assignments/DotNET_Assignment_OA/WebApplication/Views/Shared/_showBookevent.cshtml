@@ -1,0 +1,27 @@
+﻿@model BookEventModel
+
+@{
+    string privateCard = "";
+    if (Model.Type == EventType.Private)
+    {
+        privateCard = "border-danger";
+    }
+}
+
+    <div class="card m-3 shadow-sm">
+        <div class="card @privateCard">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Title</h5>
+                <h6 class="card-subtitle mb-2 text-muted">🔹@Model.StartTime.ToShortTimeString() | @Model.Date.ToLongDateString()</h6>
+                <h6 class="card-subtitle mb-2 text-muted">🔹@Model.Location</h6>
+
+                <p class="card-texts" style="width: 30ch; height: 100px; overflow: hidden; text-overflow: ellipsis">
+                    @(string.IsNullOrEmpty(Model.Description) ? "Description is not availabe": Model.Description)
+                </p>
+
+                <a asp-controller="book" asp-action="getbookevent" asp-route-id="@Model.Id" asp-route-title="@Model.Title"
+                   class="card-link btn btn-outline-primary rounded">View Details</a>
+                @* <a href="#" class="card-link">Another link</a>*@
+            </div>
+        </div>
+    </div>

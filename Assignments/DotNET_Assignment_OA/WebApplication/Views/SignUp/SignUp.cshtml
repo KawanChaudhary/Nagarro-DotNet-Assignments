@@ -1,0 +1,59 @@
+﻿@model SignUpUserModel
+
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<div class="container">
+
+    <h1 class="display-4 text-monospace text-muted">Sign Up</h1>
+
+    <hr class="hr" />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="SignUp">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Sign Up" class="btn btn-danger" />
+                </div>
+            </form>
+            <div class="align-items-baseline">
+                <p>
+                    Already user?
+                    <a class="btn btn-outline-success border-0 pt-1" asp-controller="signin" asp-action="signin">Sign In</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-8 d-flex align-items-start">
+            <img src="~/images/signup.jpg" class="img-fluid" height="25" />
+        </div>
+
+    </div>
+</div>
+

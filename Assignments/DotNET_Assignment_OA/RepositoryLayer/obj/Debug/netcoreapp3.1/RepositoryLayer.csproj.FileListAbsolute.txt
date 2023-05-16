@@ -1,0 +1,16 @@
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.deps.json
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.runtimeconfig.json
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.runtimeconfig.dev.json
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.pdb
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\bin\Debug\netcoreapp3.1\DomainLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\bin\Debug\netcoreapp3.1\DomainLayer.pdb
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.csproj.AssemblyReference.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.AssemblyInfoInputs.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.AssemblyInfo.cs
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.csproj.CoreCompileInputs.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.csproj.CopyComplete
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.pdb
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.genruntimeconfig.cache

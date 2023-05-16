@@ -1,0 +1,19 @@
+﻿@model IEnumerable<BookEventModel>
+
+@{
+    ViewData["Title"] = "GetMyBookEvent";
+}
+
+
+<div class="container">
+    <h2 class="display-4 text-monospace text-muted">My Book Events</h2>
+    <hr />
+    <div class="row">
+        @foreach (var bookEvent in Model)
+        {
+            <partial name="_showBookEvent" model="@bookEvent" />
+        }
+    </div>
+
+</div>
+

@@ -1,0 +1,10 @@
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\DomainLayer\bin\Debug\netcoreapp3.1\DomainLayer.deps.json
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\DomainLayer\bin\Debug\netcoreapp3.1\DomainLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\DomainLayer\bin\Debug\netcoreapp3.1\DomainLayer.pdb
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\DomainLayer\obj\Debug\netcoreapp3.1\DomainLayer.csproj.AssemblyReference.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\DomainLayer\obj\Debug\netcoreapp3.1\DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\DomainLayer\obj\Debug\netcoreapp3.1\DomainLayer.AssemblyInfoInputs.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\DomainLayer\obj\Debug\netcoreapp3.1\DomainLayer.AssemblyInfo.cs
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\DomainLayer\obj\Debug\netcoreapp3.1\DomainLayer.csproj.CoreCompileInputs.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\DomainLayer\obj\Debug\netcoreapp3.1\DomainLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\DomainLayer\obj\Debug\netcoreapp3.1\DomainLayer.pdb

@@ -1,0 +1,82 @@
+﻿@inject IBookEventFacade _bookEventFacade
+
+@{
+    var getDetails = _bookEventFacade.GetDetails();
+
+    var bookEvents = new List<BookEventModel>();
+    string extraClass2 = "";
+    if (ViewData["heading"] is "Upcoming")
+    {
+
+        bookEvents = await getDetails.GetUpcomingBookEvent();
+    }
+    else
+    {
+        bookEvents = await getDetails.GetPastBookEvent();
+        extraClass2 = ViewData["extraClass"].ToString();
+    }
+    string extraClass = "";
+    if (bookEvents.Count < 4) extraClass = "disabled";
+}
+
+<section class="pt-5 @extraClass2">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="d-block text-muted text-monospace font-weight-bold">@ViewData["heading"] Book Events</h3>
+            </div>
+            <div class="col-6 text-right ">
+                <a class="btn btn-primary mb-3 mr-1 @extraClass" href="#@ViewData["heading"]" role="button" data-slide="prev">
+                    ❮
+                </a>
+                <a class="btn btn-primary mb-3 @extraClass " href="#@ViewData["heading"]" role="button" data-slide="next">
+                    ❯
+                </a>
+            </div>
+            <div class="col-12">
+                <div id="@ViewData["heading"]" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner">
+                        @{ var i = 0;
+                            <div class="carousel-item active">
+                                <div class="row d-flex justify-content-center">
+
+                                    @{ int j = 0;
+                                        for (; i < bookEvents.Count; i++)
+                                        {
+                                            j++;
+                                            var bookEvent = bookEvents[i];
+                                            <partial name="_showBookEvent" model="@bookEvent" />
+                                            if (j == 3) break;
+                                        }
+                                    }
+
+                                </div>
+                            </div>
+
+                            @for (i = i + 1; i < bookEvents.Count; i++)
+                            {
+
+                                <div class="carousel-item">
+                                    <div class="row d-flex justify-content-center">
+
+                                        @{ j = 0;
+                                            for (; i < bookEvents.Count; i++)
+                                            {
+                                                j++;
+                                                var bookEvent = bookEvents[i];
+                                                <partial name="_showBookEvent" model="@bookEvent" />
+                                                if (j == 3) break;
+                                            }
+                                        }
+
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
