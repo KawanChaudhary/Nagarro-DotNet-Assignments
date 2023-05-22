@@ -22,9 +22,6 @@ namespace ServiceLayer.Service.Validators
 
             RuleFor(x => x.StartTime)
                 .NotEmpty().WithMessage("Time is required.");
-
-            RuleFor(x => x.Description)
-                .MaximumLength(500).WithMessage("Description can be at most 500 characters long.");
         }
     }
 }

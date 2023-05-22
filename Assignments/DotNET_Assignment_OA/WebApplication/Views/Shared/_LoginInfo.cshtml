@@ -1,13 +1,14 @@
-﻿@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signInManager
+﻿
+@inject IUserService _userService;
 
 
-@if (_signInManager.IsSignedIn(User))
+@if (_userService.IsAuthenticated())
 {
 
     <li class="nav-item dropdown d-block">
        
         <a class="nav-link dropdown-toggle text-dark" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Hello @(User.FindFirst("UserFirstName").Value )
+            Hello @(_userService.FirstName() + " " + _userService.LastName() )
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" asp-action="GetMyBookEvent" asp-controller="book">My Book Events</a>

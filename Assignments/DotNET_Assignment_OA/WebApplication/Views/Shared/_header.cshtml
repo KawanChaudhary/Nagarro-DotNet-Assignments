@@ -1,13 +1,13 @@
 ﻿@inject Microsoft.Extensions.Configuration.IConfiguration _configuration
-@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signInManager
 @inject IBookEventFacade _bookEventFacade;
+@inject IUserService _userService;
 
 @{
     var getDetails = _bookEventFacade.GetDetails();
 
     var myInvitations = new List<InvitationEntity>();
 
-    if (_signInManager.IsSignedIn(User))
+    if (_userService.IsAuthenticated())
     {
         myInvitations = await getDetails.GetMyInvitations();
     }
@@ -48,7 +48,7 @@
 
 
                     @{
-                        if (_signInManager.IsSignedIn(User) && myInvitations.Any() == true)
+                        if (_userService.IsAuthenticated() && myInvitations.Any() == true)
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-dark" id="d" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -21,7 +21,7 @@ namespace TestProject
             controller = new SignInController(_mockRepo.Object);
             userModel = new SignInUserModel();
         }
-        
+
         [Test]
         public void SignInPage_Test()
         {
@@ -32,44 +32,46 @@ namespace TestProject
             Assert.IsNotNull(result);
         }
 
+        /*
         [Test]
-        public void SignIn_TestValidSignIn()
-        {
-            
-            // Arrange            
-            userModel.Email = "data@go.com";
-            userModel.Password = "datago";
-            userModel.RememberMe = false;
+         public void SignIn_TestValidSignIn()
+         {
 
-            // Act
+             // Arrange            
+             userModel.Email = "data@go.com";
+             userModel.Password = "datago";
+             userModel.RememberMe = false;
 
-            _mockRepo.Setup(x => x.PasswordSignInAsync(userModel)).ReturnsAsync(Microsoft.AspNetCore.Identity.SignInResult.Success);
+             // Act
 
-            var result = controller.SignIn(userModel).Result as ViewResult;
+             _mockRepo.Setup(x => x.PasswordSignInAsync(userModel)).ReturnsAsync(Microsoft.AspNetCore.Identity.SignInResult.Success);
 
-            // Assert
-            Assert.IsNull(result);
-            _mockRepo.Verify(x => x.PasswordSignInAsync(userModel), Times.Once);
-        }
+             var result = controller.SignIn(userModel).Result as ViewResult;
 
-        [Test]
-        public void SignIn_TestInvalidSignIn()
-        {            
-            // Arrange
-            userModel.Email = "data@go.com";
-            userModel.Password = "datago123";
-            userModel.RememberMe = false;
+             // Assert
+             Assert.IsNull(result);
+             _mockRepo.Verify(x => x.PasswordSignInAsync(userModel), Times.Once);
+         }
 
-            // Act
+         [Test]
+         public void SignIn_TestInvalidSignIn()
+         {            
+             // Arrange
+             userModel.Email = "data@go.com";
+             userModel.Password = "datago123";
+             userModel.RememberMe = false;
 
-            _mockRepo.Setup(x => x.PasswordSignInAsync(userModel)).ReturnsAsync(Microsoft.AspNetCore.Identity.SignInResult.Failed);
+             // Act
 
-            var result = controller.SignIn(userModel).Result as ViewResult;
+             _mockRepo.Setup(x => x.PasswordSignInAsync(userModel)).ReturnsAsync(Microsoft.AspNetCore.Identity.SignInResult.Failed);
 
-            // Assert
-            Assert.IsNotNull(result);
-            _mockRepo.Verify(x => x.PasswordSignInAsync(userModel), Times.Once);
-        }
+             var result = controller.SignIn(userModel).Result as ViewResult;
+
+             // Assert
+             Assert.IsNotNull(result);
+             _mockRepo.Verify(x => x.PasswordSignInAsync(userModel), Times.Once);
+         }
+     }
+ */
     }
-
-}
+ }

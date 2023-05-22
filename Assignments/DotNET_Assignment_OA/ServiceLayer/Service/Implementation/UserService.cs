@@ -11,6 +11,7 @@ namespace ServiceLayer.Service.Implementation
         private readonly IHttpContextAccessor _httpContext;
         private readonly UserManager<ApplicationUser> _userManager;
 
+
         public UserService(IHttpContextAccessor httpContext, UserManager<ApplicationUser> userManager)
         {
             _httpContext = httpContext;
@@ -43,7 +44,7 @@ namespace ServiceLayer.Service.Implementation
             return false;
         }
 
-        public string FirsTName()
+        public string FirstName()
         {
             if (IsAuthenticated())
             {

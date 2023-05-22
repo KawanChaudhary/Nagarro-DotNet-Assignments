@@ -1,6 +1,10 @@
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 using BusinessLayer.AbstarctFactory.BookEventsFacade;
 using BusinessLayer.AbstarctFactory.BookEventsFacade.AbstractEvent;
 using BusinessLayer.AbstarctFactory.BookEventsFacade.ConcreteEvent;
+using BusinessLayer.ObserverPattern;
+using BusinessLayer.PublisherSubscriberPattern;
 using DomainLayer.Models;
 using FluentValidation;
 using Microsoft.AspNetCore.Builder;
@@ -52,6 +56,7 @@ namespace WebApplication
 
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                .AddEntityFrameworkStores<BookEventContext>();
 
@@ -95,9 +100,27 @@ namespace WebApplication
             services.AddScoped<IAddEventManager, AddEventManager>();
             services.AddScoped<IGetEventManager, GetEventManager>();
 
+            services.AddScoped<ISubject, Subject>();
+            services.AddScoped<IObserver, Observer>();
+
+            services.AddScoped<IPublisher, Publisher>();
+
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimsPrincipalFactory>();
+
+            /*services.AddSingleton<ILogger, Logger>();*/
+
+            services.AddSignalR();
+
+            services.AddNotyf(config =>
+            {
+                config.DurationInSeconds = 10;
+                config.IsDismissable = true;
+                config.Position = NotyfPosition.TopRight;
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -115,6 +138,8 @@ namespace WebApplication
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseNotyf();
 
             app.UseEndpoints(endpoints =>
             {

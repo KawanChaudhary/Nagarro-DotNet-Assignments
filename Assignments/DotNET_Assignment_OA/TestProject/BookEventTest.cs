@@ -1,18 +1,18 @@
-﻿using DomainLayer.Models;
+﻿using BusinessLayer.AbstarctFactory.BookEventsFacade;
+using BusinessLayer.AbstarctFactory.BookEventsFacade.AbstractEvent;
+using DomainLayer.Models;
 using DomainLayer.OtherFiles;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
-using ServiceLayer.Service.Interface;
 using System;
-using System.Collections.Generic;
 using WebApplication.Controllers;
 
 namespace TestProject
 {
     class BookEventTest
     {
-        private Mock<IBookEventService> _mockRepo;
+        private Mock<IBookEventFacade> _mockRepo;
 
 
         private BookController controller;
@@ -20,8 +20,8 @@ namespace TestProject
         [SetUp]
         public void Setup()
         {
-            _mockRepo = new Mock<IBookEventService>();
-            /*controller = new BookController(_mockRepo.Object);*/
+            _mockRepo = new Mock<IBookEventFacade>();
+            controller = new BookController(_mockRepo.Object);
         }
 
         [Test]
@@ -61,13 +61,14 @@ namespace TestProject
 
 
             // Act
-            _mockRepo.Setup(x => x.AddNewBookEvent(newEvent));
+            
+            _mockRepo.Setup(x => x.AddDetails().AddNewBookEvent(newEvent));
 
             var result = controller.AddNewEvent(newEvent).Result as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
-            _mockRepo.Verify(x => x.AddNewBookEvent(newEvent), Times.Once());
+            _mockRepo.Verify(x => x.AddDetails().AddNewBookEvent(newEvent), Times.Once());
         }
 
         [Test]
@@ -96,7 +97,7 @@ namespace TestProject
             };
 
             // Act
-            _mockRepo.Setup(x => x.AddNewBookEvent(newEvent));
+            _mockRepo.Setup(x => x.AddDetails().AddNewBookEvent(newEvent));
 
             var result = controller.AddNewEvent(newEvent).Result as ViewResult;
 

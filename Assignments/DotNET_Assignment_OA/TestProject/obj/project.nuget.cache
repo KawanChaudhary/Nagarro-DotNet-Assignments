@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/C7m/XkkFuQ5y5ZSVqBQ1De/9yYsyK/PmGXAyBHjIEjKOwRf02u9X3hhM2dYiTAXXEbLUPHNrKf865+ugLrjEA==",
+  "dgSpecHash": "NzGGnpVIpRpgs7CURmPCJPQlGdrLwDRGFF/v3QtlMuGuZpa/Of1x5I+hfSgdQzdRNfVcwQa4SyZHtEFE4eHYYw==",
   "success": true,
   "projectFilePath": "C:\\Users\\kawansingh\\Documents\\kawan-kumar-singh\\Assignments\\DotNET_Assignment_OA\\TestProject\\TestProject.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\kawansingh\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
     "C:\\Users\\kawansingh\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\kawansingh\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\kawansingh\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
@@ -77,7 +78,10 @@
     "C:\\Users\\kawansingh\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\kawansingh\\.nuget\\packages\\moq\\4.18.4\\moq.4.18.4.nupkg.sha512",
     "C:\\Users\\kawansingh\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
-    "C:\\Users\\kawansingh\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\kawansingh\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\kawansingh\\.nuget\\packages\\nlog\\5.1.3\\nlog.5.1.3.nupkg.sha512",
+    "C:\\Users\\kawansingh\\.nuget\\packages\\nlog.extensions.logging\\5.2.3\\nlog.extensions.logging.5.2.3.nupkg.sha512",
+    "C:\\Users\\kawansingh\\.nuget\\packages\\nlog.web.aspnetcore\\5.2.3\\nlog.web.aspnetcore.5.2.3.nupkg.sha512",
     "C:\\Users\\kawansingh\\.nuget\\packages\\nuget.frameworks\\5.0.0\\nuget.frameworks.5.0.0.nupkg.sha512",
     "C:\\Users\\kawansingh\\.nuget\\packages\\nunit\\3.13.1\\nunit.3.13.1.nupkg.sha512",
     "C:\\Users\\kawansingh\\.nuget\\packages\\nunit3testadapter\\3.17.0\\nunit3testadapter.3.17.0.nupkg.sha512",

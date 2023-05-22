@@ -1,11 +1,9 @@
-﻿@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _userManager
-@inject IUserService _userService
+﻿@inject IUserService _userService
 @model EventViewModel
 @{
     Layout = "_Layout";
-}
-@{
-    ViewData["Title"] = "Event details " + Model.EventDetails.Title;
+
+    ViewData["Title"] = Model.EventDetails.Title;
 }
 
 
@@ -46,6 +44,7 @@
         }
     </style>
 </head>
+
 
 <div class="container">
     <h2 class="display-4 text-monospace text-muted">Book Event Details</h2>
@@ -89,7 +88,7 @@
                     <div class="label label-primary">🔹@Model.EventDetails.Type</div>
                 </div>
                 @{
-                    if (_userManager.IsSignedIn(User) && (_userService.GetUserId() == Model.EventDetails.CreatedBy || _userService.IsAdmin()))
+                    if (_userService.IsAuthenticated() && (_userService.GetUserId() == Model.EventDetails.CreatedBy || _userService.IsAdmin()))
                     {
 
                         <div class="col-md-4 font-weight-bold">
@@ -134,13 +133,15 @@
             <div class="d-flex flex-column col-md-12">
 
                 <div class="coment-bottom bg-white p-2 px-4">
-                    @if (_userManager.IsSignedIn(User))
+
+                    @if (_userService.IsAuthenticated())
                     {
+
                         <form class="d-flex flex-row add-comment-section mt-4 mb-4" asp-action="addcomment">
                             <input asp-for="@Model.EventDetails.Id" readonly hidden />
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <img class="img-fluid img-responsive rounded-circle mr-2" src="~/images/default.png" width="38" />
-                            <input asp-for="@Model.Comment.Text" type="text" class="form-control mr-3" placeholder="Please write something here." />
+                            <input asp-for="@Model.Comment.Text" type="text" class="form-control mr-3" placeholder="Please write something here." required />
                             <span asp-validation-for="@Model.Comment.Text" class="text-danger"></span>
                             <input type="submit" value="Add Comment" class="btn btn-outline-success w-25" />
                         </form>
@@ -179,3 +180,4 @@
         </div>
     </div>
 </div>
+

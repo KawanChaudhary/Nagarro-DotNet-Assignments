@@ -2,7 +2,7 @@
 {
     public interface IUserService
     {
-        string FirsTName();
+        string FirstName();
         string GetEmail();
         string GetUserId();
         bool IsAdmin();

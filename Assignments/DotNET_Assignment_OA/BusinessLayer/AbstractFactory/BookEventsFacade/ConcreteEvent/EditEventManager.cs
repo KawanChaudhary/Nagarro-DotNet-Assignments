@@ -27,7 +27,8 @@ namespace BusinessLayer.AbstarctFactory.BookEventsFacade.ConcreteEvent
         public async Task<ActionResult<EventViewModel>> UpdateEvent(EventViewModel bookEvent)
         {
             var editEvent = await _bookEventRepository.UpdateEvent(bookEvent);
-            await _invitationRepository.AddInvitation(bookEvent);
+            if (!string.IsNullOrEmpty(bookEvent.EditEventDetails.InviteByEmail))
+                await _invitationRepository.AddInvitation(bookEvent);
             return editEvent;
         }
     }

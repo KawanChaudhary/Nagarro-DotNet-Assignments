@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.AbstarctFactory.BookEventsFacade;
+using BusinessLayer.ExceptionHandler;
 using DomainLayer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,13 +29,13 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        public ViewResult GetAllBookEvent()
+        public async Task<ViewResult> GetAllBookEvent()
         {
-            
-            /*var getDetails = bookEventFacade.GetDetails();
-            var data = await getDetails.GetAllBookEvents();*/
+            var getDetails = bookEventFacade.GetDetails();
+            var data = await getDetails.GetAllBookEvents();
 
-            return View();
+
+            return View(data);
         }
 
         [Authorize]
@@ -48,7 +49,8 @@ namespace WebApplication.Controllers
         [Route("event-details/{id}", Name = "eventDetailsRoute")]
         public async Task<IActionResult> GetBookEvent(int id)
         {
-            var getDetails = bookEventFacade.GetDetails();            ;
+
+            var getDetails = bookEventFacade.GetDetails(); ;
 
             var eventDetails = await getDetails.GetBookEventById(id);
 
@@ -60,6 +62,7 @@ namespace WebApplication.Controllers
                 AllComments = allComments
             };
             return View(data);
+
         }
 
         [Authorize]
@@ -71,6 +74,7 @@ namespace WebApplication.Controllers
         }
 
         [HttpPost]
+        [ExceptionFilterWeb()]
         public async Task<IActionResult> AddNewEvent(EventViewModel bookEvent)
         {
             var validator = new BookEventValidator();
@@ -95,8 +99,11 @@ namespace WebApplication.Controllers
 
 
         // Comment
+        [HttpPost]
+        [ExceptionFilterWeb()]
         public async Task<IActionResult> AddComment(EventViewModel bookEvent)
         {
+
             var validator = new CommentValidator();
             var res = validator.Validate(bookEvent.Comment);
 
@@ -113,6 +120,7 @@ namespace WebApplication.Controllers
                 return RedirectToAction("GetBookEvent", new { bookEvent.EventDetails.Id });
 
             return result.Result;
+
         }
 
         // Edit
@@ -120,20 +128,19 @@ namespace WebApplication.Controllers
         {
             var getDetails = bookEventFacade.GetDetails();
 
-            var res = await getDetails.GetBookEventById(id);
+            var bookEvent = await getDetails.GetBookEventById(id);
+
+            var res = new EventViewModel()
+            {
+                EventDetails = bookEvent
+            };
+
             return View(res);
         }
 
         [HttpPost]
         public async Task<IActionResult> UpdateEvent(EventViewModel bookEvent)
         {
-            var validator = new BookEventValidator();
-            var res = validator.Validate(bookEvent.EventDetails);
-
-            if (!res.IsValid)
-            {
-                return BadRequest(res.Errors);
-            }
 
             var editDetails = bookEventFacade.EditDetails();
 
@@ -143,6 +150,7 @@ namespace WebApplication.Controllers
                 return RedirectToAction("GetBookEvent", new { bookEvent.EventDetails.Id });
 
             return result.Result;
+
         }
 
 

@@ -60,7 +60,8 @@ namespace ServiceLayer.Service.Implementation
                 UpdatedOn = DateTime.UtcNow
             };
 
-            var res = await _unitOfWork.BookEventRepository.Add(newEvent);
+            await _unitOfWork.BookEventRepository.Add(newEvent);
+            await _unitOfWork.CompleteAsync();
             
             return newEvent.Id;
         }
@@ -81,7 +82,7 @@ namespace ServiceLayer.Service.Implementation
             eventPost.UpdatedOn = DateTime.Now;
 
             var res = await _unitOfWork.BookEventRepository.Update(eventPost);
-
+            await _unitOfWork.CompleteAsync();
             return new EventViewModel
             {
                 EventDetails = bookEvent.EventDetails

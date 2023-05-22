@@ -3,9 +3,6 @@ using DomainLayer.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace RepositoryLayer
 {
@@ -16,19 +13,16 @@ namespace RepositoryLayer
         {
             
         }
-        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            var myInterceptor = new MyCommandInterceptor();
-
-            IEnumerable<IInterceptor> interceptors = (IEnumerable<IInterceptor>)Enumerable.Repeat(myInterceptor, 1);
-
-            optionsBuilder.AddInterceptors(interceptors);
-        }*/
         public virtual DbSet<BookEventEntity> BookEventEntities { get; set; }
 
         public virtual DbSet<CommentEntity> Comments { get; set; }
 
         public virtual DbSet<InvitationEntity> Invitations { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.AddInterceptors(new DbInterceptor());
+        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -1,15 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using DomainLayer.Data;
 using DomainLayer.Models;
+using Microsoft.AspNetCore.Mvc;
+using RepositoryLayer.Repository.UnitOfWork;
+using ServiceLayer.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RepositoryLayer;
-using ServiceLayer.Service.Interface;
-using DomainLayer.Data;
-using RepositoryLayer.Repository.UnitOfWork;
 
 namespace ServiceLayer.Service.Implementation
 {
@@ -19,7 +16,7 @@ namespace ServiceLayer.Service.Implementation
         private readonly IUserService _userService;
 
         public CommentService(IUnitOfWork unitOfWork, IUserService userService)
-        {
+        { 
             _unitOfWork = unitOfWork;
             _userService = userService;
         }
@@ -28,7 +25,7 @@ namespace ServiceLayer.Service.Implementation
         {
             var comment = new CommentModel()
             {
-                FirstName = _userService.FirsTName(),
+                FirstName = _userService.FirstName(),
                 LastName = _userService.LastName(),
                 Text = bookEvent.Comment.Text,
                 UserId = _userService.GetEmail(),
@@ -46,6 +43,7 @@ namespace ServiceLayer.Service.Implementation
                 TimeStamp = DateTime.Now
             };
             await _unitOfWork.CommentRepository.Add(newComment);
+            await _unitOfWork.CompleteAsync();
 
             return comment;
         }

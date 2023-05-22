@@ -39,6 +39,7 @@ namespace ServiceLayer.Service.Implementation
                 };
 
                 await _unitOfWork.InvitationRepository.Add(newInvitation);
+                await _unitOfWork.CompleteAsync();
             }
         }
 

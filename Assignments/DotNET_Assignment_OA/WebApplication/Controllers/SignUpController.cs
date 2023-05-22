@@ -1,4 +1,5 @@
-﻿using DomainLayer.Models;
+﻿using BusinessLayer.ExceptionHandler;
+using DomainLayer.Models;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,18 +27,21 @@ namespace WebApplication.Controllers
 
         [Route("signup")]
         [HttpPost]
+        [ExceptionFilterWeb()]
         public async Task<IActionResult> Signup(SignUpUserModel userModel)
         {
-            var validator = new SignUpValidator();
-            var res = validator.Validate(userModel);
-
-            if (!res.IsValid)
-            {
-                return BadRequest(res.Errors);
-            }
+            
 
             if (ModelState.IsValid)
             {
+                var validator = new SignUpValidator();
+                var res = validator.Validate(userModel);
+
+                if (!res.IsValid)
+                {
+                    return BadRequest(res.Errors);
+                }
+
                 var result = await _signUpRespository.CreateUserAsync(userModel);
                 if (!result.Succeeded)
                 {

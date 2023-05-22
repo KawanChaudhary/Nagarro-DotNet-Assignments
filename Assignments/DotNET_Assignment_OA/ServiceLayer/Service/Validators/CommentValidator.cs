@@ -10,8 +10,6 @@ namespace ServiceLayer.Service.Validators
             RuleFor(x => x.Text)
             .NotEmpty().WithMessage("Comment text is required.");
 
-            RuleFor(x => x.EventId)
-                .NotEmpty().WithMessage("Event id is required.");
         }
     }
 }
