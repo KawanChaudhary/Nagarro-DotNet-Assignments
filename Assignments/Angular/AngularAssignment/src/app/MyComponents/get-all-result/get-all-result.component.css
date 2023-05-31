@@ -1,0 +1,15 @@
+.material-symbols-outlined {
+  cursor: pointer;  
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 500,
+    'GRAD' 200,
+    'opsz' 48;
+}
+
+.material-symbols-outlined:hover{
+  color: crimson;
+}
+.editHover:hover{
+  color: blue;
+}

@@ -1,0 +1,19 @@
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11">
+
+            <div class="card">
+                <h5 class="text-center mt-3 font-monospace">STUDENT RECORD</h5>
+                <div class="card-body mx-auto text-muted">
+                    <p class="card-text">Roll Number : {{result.rollNumber}}</p>
+                    <p class="card-text">Name : {{result.name}}</p>
+                    <p class="card-text">Date of Birth : {{result.dateOfbirth | date : "MMMM d, y"}}</p>
+                    <p class="card-text">Score : {{result.score}}</p>
+                </div>
+            </div>
+            <div class="mt-2">
+                <button routerLink="/" class="btn btn-outline-primary">Back to Home</button>
+            </div>
+        </div>
+    </div>
+</div>
