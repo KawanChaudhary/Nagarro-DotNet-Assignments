@@ -1,0 +1,23 @@
+.icon-hover:hover {
+  border-color: #3b71ca !important;
+  background-color: white !important;
+  color: #3b71ca !important;
+}
+
+.icon-hover:hover i {
+  color: #3b71ca !important;
+}
+
+.bg-discount{
+  background-color: #E4F1CC;
+  padding: 4px 8px;
+  border-radius: 100px;
+}
+
+.off-color{
+  color: #476F00;
+}
+
+.cursor{
+  cursor: pointer;
+}

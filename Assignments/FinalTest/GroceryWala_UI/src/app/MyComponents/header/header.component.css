@@ -1,0 +1,143 @@
+body {
+    background-color: #FFCDD2;
+}
+
+.bg-black {
+    background-color: #000;
+}
+
+.dropdown-menu ul {
+    float: left;
+}
+
+#logo {
+    height: 60px;
+    border-radius: 2px;
+}
+
+.navbar-brand {
+    padding: 10px 20px;
+    font-size: 20px;
+}
+
+.navbar-nav {
+    width: 100%;
+}
+
+.nav-item {
+    padding: 6px 14px;
+    text-align: center;
+}
+
+.nav-link {
+    padding-bottom: 10px;
+}
+
+.v-line {
+    background-color: gray;
+    width: 1px;
+    height: 20px;
+}
+
+.navbar-collapse.collapse.in {
+    display: block !important;
+}
+
+@media (max-width: 576px) {
+    .nav-item {
+        width: 100%;
+        text-align: left;
+    }
+
+    .v-line {
+        display: none;
+    }
+}
+
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #e74c3c !important;
+}
+
+.searchbar {
+    background-color: #353b48;
+    border-radius: 30px;
+}
+
+.liclass {
+    overflow: auto;
+    white-space: nowrap;
+  }
+
+.search_input {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color: transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+}
+
+.searchbar:hover>.search_input {
+    padding: 0 10px;
+    width: 450px;
+    caret-color: red;
+    transition: width 0.4s linear;
+}
+
+.searchbar:hover>.search_icon {
+    background: white;
+    color: #e74c3c;
+}
+
+.search_icon {
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+}
+
+.badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    padding-bottom: 10px;
+  }
+  
+  .label-warning[href],
+  .badge-warning[href] {
+    background-color: #c67605;
+  }
+  #lblCartCount {
+      font-size: 12px;
+      background: #ff0000;
+      color: #fff;
+      padding: 3px 5px;
+      vertical-align: top;
+      margin-left: -5px; 
+      margin-bottom: 15px;
+  }
+
+
+  .icon-hover:hover {
+    border-color: #3b71ca !important;
+    background-color: white !important;
+  }
+  
+  .icon-hover:hover i {
+    color: #3b71ca !important;
+  }
