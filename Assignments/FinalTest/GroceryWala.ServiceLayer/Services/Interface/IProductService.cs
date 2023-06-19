@@ -8,6 +8,8 @@ namespace GroceryWala.DataServiceLayer.Services.Interface
     {
         Task<int> AddNewProduct(ProductModel product);
 
+        Task<int> UpdateProduct(ProductModel product);
+
         Task<ImageModel> AddImages(ImageModel image);
 
         Task<List<ProductModel>> GetAllProductsDetails();
@@ -15,5 +17,22 @@ namespace GroceryWala.DataServiceLayer.Services.Interface
         Task<List<ProductModel>> GetProductsByCategory(int category);
 
         Task<ProductModel> GetProductById(int productId);
+
+        ImageModel GetProductImage(string productId);
+
+        Task<int> AddComment(CommentModel comment);
+
+        Task<List<CommentModel>> GetCommentsByProductIId(string productId);
+
+        Task<int> AddRating(RatingModel rating);
+
+        RatingModel GetRatingOfProductByuser(string productId, string userId);
+
+        Task<List<OfferModel>> GetAllOffers();
+        Task<int> AddOffer(OfferModel offer);
+
+        Task DeleteImageById(int imageId);
+
+        Task DeleteProductById(int productId);
     }
 }

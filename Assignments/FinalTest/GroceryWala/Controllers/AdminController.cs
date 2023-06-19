@@ -1,4 +1,5 @@
-﻿using GroceryWala.DataServiceLayer.Services.Interface;
+﻿using GroceryWala.BusinessLayer.GroceryWalaAbstractFactory;
+using GroceryWala.DataServiceLayer.Services.Interface;
 using GroceryWala.DomainLayer.Models.Multiple;
 using GroceryWala.DomainLayer.Models.Single;
 using Microsoft.AspNetCore.Cors;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GroceryWala.Controllers
@@ -18,16 +20,11 @@ namespace GroceryWala.Controllers
     [Produces("application/json")]
     public class AdminController : Controller
     {
-        private readonly IProductService productService;
-        private readonly IWebHostEnvironment webHostEnvironement;
-        private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly IGroceryWalaAbstractFactory groceryWalaAbstractFactory;
 
-        public AdminController(IProductService _productService, IWebHostEnvironment _webHostEnvironement,
-            IHttpContextAccessor _httpContextAccessor)
+        public AdminController(IGroceryWalaAbstractFactory groceryWalaAbstractFactory)
         {
-            this.productService = _productService;
-            this.webHostEnvironement = _webHostEnvironement;
-            this.httpContextAccessor = _httpContextAccessor;
+            this.groceryWalaAbstractFactory = groceryWalaAbstractFactory;
         }
 
         public IActionResult Index()
@@ -39,58 +36,37 @@ namespace GroceryWala.Controllers
 
         public async Task<IActionResult> AddNewProduct(ProductModel product)
         {
-            try 
+            try
             {
-                int productId = await productService.AddNewProduct(product);
-                
-                return Ok(new { 
-                    id = productId
+                if (ModelState.IsValid)
+                {
+
+                    int productId = await groceryWalaAbstractFactory.AdminFactory.AddFacade.AddNewProduct(product);
+
+                    return Ok(new
+                    {
+                        id = productId
+                    });
+                }
+                return BadRequest(new
+                {
+                    error = ModelState.Values
                 });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
 
         }
 
-        [HttpPost("addproductimages")]
+        [HttpPost("addproductimages/{productId}")]
 
-        public async Task<IActionResult> AddProductImages(IFormFile[] images)
-        {
+        public async Task<IActionResult> AddProductImages(IFormFile[] images, string productId)
+         {
             try
-            {                
-                string productId = HttpContext.Request.Form["productId"];
-
-                var baseUrl = httpContextAccessor.HttpContext.Request.Scheme + "://" +
-                    httpContextAccessor.HttpContext.Request.Host +
-                    httpContextAccessor.HttpContext.Request.PathBase;
-                string directory = $"{webHostEnvironement.WebRootPath}\\images\\{productId}";
-
-                if (!Directory.Exists(directory))
-                {
-                    Directory.CreateDirectory(directory);
-                }
-
-                foreach (var file in images)
-                {
-
-                    var path = Path.Combine(directory, file.FileName);
-
-                    using (var fileStream = new FileStream(path, FileMode.Create))
-                    {
-                        file.CopyTo(fileStream);
-                    }
-
-                    var image = new ImageModel()
-                    {
-                        ProductId = productId,
-                        ImageAddress = path
-                    };
-
-                    var newImage = await productService.AddImages(image);
-
-                }
+            {
+                await groceryWalaAbstractFactory.AdminFactory.AddFacade.AddImages(images, productId);
 
                 return Ok(new
                 {
@@ -101,7 +77,7 @@ namespace GroceryWala.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
 
@@ -110,95 +86,154 @@ namespace GroceryWala.Controllers
         {
             try
             {
-                var products = await productService.GetAllProductsDetails();
+                var res = await groceryWalaAbstractFactory.AdminFactory.GetFacade.GetAllProducts();
 
-                var images = await productService.GetAllProductsImages();
-
-                var res = new List<AllProductModel>();
-
-                foreach(var product in products)
+                return Ok(new
                 {
-                    string productId = product.Id.ToString();
-                    var productImages = new List<ImageModel>();
-                    foreach(var image in images)
-                    {
-                        if(productId == image.ProductId)
-                        {
-                            productImages.Add(new ImageModel()
-                            {
-                                Id = image.Id,
-                                ProductId = image.ProductId,
-                                ImageAddress = "http://127.0.0.1:8080/images/" + image.ImageAddress.Substring(97)
-                            });
-                        }
-                    }
-                    res.Add(new AllProductModel()
-                    {
-                        Details = product,
-                        Images = productImages
-                    });
-                }
-
-                return Ok(new { 
                     response = res
                 });
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return BadRequest(ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
 
-        /*      [HttpPost("addimages")]
 
-              public async  Task<IActionResult> AddImages(IFormFile[] images)
-              {
-                  try
-                  {
-                      string productId = HttpContext.Request.Form["productId"];
+        [HttpPost("addoffer")]
+        public async Task<IActionResult> AddOffer(OfferModel offer)
+        {
+            try
+            {
 
-                      var baseUrl = httpContextAccessor.HttpContext.Request.Scheme + "://" +
-                          httpContextAccessor.HttpContext.Request.Host +
-                          httpContextAccessor.HttpContext.Request.PathBase;
-                      string directory = $"{webHostEnvironement.WebRootPath}\\images\\{productId}";
+                if (ModelState.IsValid)
+                {
 
-                      if (!Directory.Exists(directory))
-                      {
-                          Directory.CreateDirectory(directory);
-                      }
+                    var offerId = await groceryWalaAbstractFactory.AdminFactory.AddFacade.AddOffers(offer);
 
-                      var res = new List<ImageModel>();
+                    if (offerId > 0)
+                    {
+                        return Ok(new
+                        {
+                            response = true,
+                            offerId = offerId
+                        });
+                    }
 
-                      foreach (var file in images)
-                      {
+                }
+                return StatusCode(StatusCodes.Status500InternalServerError, ModelState.Values);
+            }
+            catch (Exception Ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, Ex.Message);
+            }
+        }
 
-                          var path = Path.Combine(directory, file.FileName);
+        [HttpPut("updateproduct")]
+        public async Task<IActionResult> UpdateProduct(ProductModel product)
+        {
+            try
+            {
 
-                          var image = new ImageModel()
-                          {
-                              ProductId = productId,
-                              ImageAddress = path
-                          };
+                if (ModelState.IsValid)
+                {
 
-                          var newImage = await productService.AddImages(image);
+                    var productId = await groceryWalaAbstractFactory.AdminFactory.EditFacade.UpdateProduct(product);
 
-                          res.Add(newImage);                    
-                      }
+                    if (productId > 0)
+                    {
+                        return Ok(new
+                        {
+                            response = true,
+                            id = productId
+                        });
+                    }
 
-                      return Ok(new
-                      {
-                          response = res
-                      });
+                }
+                return StatusCode(StatusCodes.Status500InternalServerError, ModelState.Values);
+            }
+            catch (Exception Ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, Ex.Message);
+            }
+        }
 
+        [HttpDelete("deleteimage/{imageId}")]
+        public async Task<IActionResult> DeleteImageById(int imageId)
+        {
+            try
+            {
+                await groceryWalaAbstractFactory.AdminFactory.EditFacade.DeleteImageById(imageId);
 
-                  }
-                  catch (Exception ex)
-                  {
-                      return BadRequest(ex);
-                  }
-              }
-      */
+                return Ok(new
+                {
+                    response = true
+                });
+            }
+            catch(Exception Ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, Ex.Message);
+            }
+        }
+
+        [HttpDelete("deleteproduct/{productId}")]
+        public async Task<IActionResult> DeleteProductById(int productId)
+        {
+            try
+            {
+                await groceryWalaAbstractFactory.AdminFactory.EditFacade.DeleteProductById(productId);
+                return Ok(new
+                {
+                    response = true
+                });
+            }
+            catch (Exception Ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, Ex.Message);
+            }
+        }
+
+        [HttpGet("allorders")]
+        public async Task<IActionResult> GetAllOrders()
+        {
+            try{
+
+                var orders = await groceryWalaAbstractFactory.AdminFactory.GetFacade.GetAllOrders();
+
+                return Ok(new
+                {
+                    response = true,
+                    orders = orders
+                });
+
+            }
+            catch(Exception Ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, Ex.Message);
+            }
+        }
+        
+        [HttpGet("getmostorderproducts/{month}")]
+        public async Task<IActionResult> GetMostOrderProducts(int month)
+        {
+            try
+            {
+                var products = await groceryWalaAbstractFactory.AdminFactory.
+                    GetFacade.GetMostOrderProducts(month);
+
+                return Ok(new
+                {
+                    response = true,
+                    products = products
+                });
+
+            }
+            catch(Exception Ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, Ex.Message);
+            }
+        }
 
     }
 }

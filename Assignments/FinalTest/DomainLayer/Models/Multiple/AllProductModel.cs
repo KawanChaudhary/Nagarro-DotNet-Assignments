@@ -10,6 +10,8 @@ namespace GroceryWala.DomainLayer.Models.Multiple
     public class AllProductModel
     {
         public ProductModel Details { get; set; }
-        public List<ImageModel> Images { get; set; }
+        public ImageModel Images { get; set; }
+
+        public bool IsInCart { get; set; }
     }
 }

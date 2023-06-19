@@ -1,9 +1,14 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, HostBinding, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faIndianRupeeSign, faStar, faPlus, faMinus, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
+import { CartModel } from 'src/app/Models/CartModel';
 import { CategoryEnum } from 'src/app/Models/CategoryEnum';
 import { SizeTypeEnum } from 'src/app/Models/SizeTypeEnum';
+import { UserModel } from 'src/app/Models/UserModel';
+import { UserService } from 'src/app/services/account/user.service';
+import { CartService } from 'src/app/services/global/cart.service';
 import { NotifyService } from 'src/app/services/notification/notify.service';
 import { ProductsService } from 'src/app/services/product/products.service';
 @Component({
@@ -14,10 +19,10 @@ import { ProductsService } from 'src/app/services/product/products.service';
 export class ViewProductComponent implements OnInit, OnDestroy {
 
   //Icon
+  starIcon = faStar;
   rupeeIcon = faIndianRupeeSign;
-  staricon = faStar;
-  plusIcon = faPlus;
   minusIcon = faMinus;
+  plusIcon = faPlus;
   shoppingBasketIcon = faShoppingBasket;
 
   // activated routes
@@ -26,7 +31,7 @@ export class ViewProductComponent implements OnInit, OnDestroy {
   //products variables
   productId: any = 0;
   product = {
-    id: 6,
+    id: 0,
     name: "Apples",
     price: 100,
     description: "Apples",
@@ -40,19 +45,43 @@ export class ViewProductComponent implements OnInit, OnDestroy {
     otherDetails: "",
     reviewCount: 0,
   }
-  images: any[] = [{ 
-    id: 1, 
-    productId: '1', 
-    imageAddress: 'http://127.0.0.1:8080/images/8\\266577-2_4-kissan-mixed-fruit-jam.jpg' }
+  images: any[] = [{
+    id: 1,
+    productId: '1',
+    imageAddress: 'http://127.0.0.1:8080/images/8\\266577-2_4-kissan-mixed-fruit-jam.jpg'
+  }
   ];
 
   // no. of items to buy
   totalItems = 1;
 
-  currentImageIndex:number = 0;
+  // image index to show
+  currentImageIndex: number = 0;
 
-  constructor(private productService: ProductsService, private notifyService: NotifyService, 
-    private route: ActivatedRoute) {
+  // which nav pill activate
+  active = 1;
+
+  // product rating index
+  rating  = 3.8;
+  
+  // similar items list item
+  similarItems: any[] = [];
+
+  // Cart
+  cartItem = new CartModel('', '', 1);
+  isInCart = false;
+
+  // User Details
+  user: UserModel = new UserModel('', '', '', '', '', false);
+
+
+  constructor(private productService: ProductsService, private notifyService: NotifyService,
+    private route: ActivatedRoute, private cartService: CartService, private userService: UserService, 
+    private router: Router) {
+
+      this.route.paramMap.subscribe(() => {
+        this.ngOnInit();
+    });
 
   }
 
@@ -60,19 +89,72 @@ export class ViewProductComponent implements OnInit, OnDestroy {
     this.routeSub = this.route.params.subscribe(params => {
       this.productId = params['productid'];
     });
-    this.fetchProducts();
+    this.fetchProductDetails();
+    this.fetchUserDetails();
   }
 
   ngOnDestroy() {
     this.routeSub.unsubscribe();
   }
 
-  fetchProducts() {
+  //fetchUserDetails()
+
+  // Fetch details of logged user
+  fetchUserDetails(): void {
+    if (this.userService.isUserAuthenticated()) {
+      this.userService.getUserDetails().subscribe(
+        {
+          next: (response: any) => {
+
+            if (response.response) {
+              this.user = response.user;
+              // console.log(this.user);
+              this.fetchCartProducts();
+            }
+          },
+          error: (error: Error) => {
+            console.log(error);
+            this.notifyService.showError(`Error: ${error.message}`, "Failed");
+          }
+        }
+      );
+    }
+  }
+
+  fetchProductDetails() {
     this.productService.getProductById(this.productId).subscribe(
       {
         next: (response: any) => {
           this.product = response.product;
           this.images = response.images;
+
+          this.fetchSimilarItems();
+        },
+        error: (error: Error) => {
+          console.log(error);
+          this.notifyService.showError(`Error: ${error.message}`, "Failed");
+        }
+      }
+    );    
+
+  }
+
+  fetchSimilarItems(){
+    this.productService.getProductByCategory(this.product.category).subscribe(
+      {
+        next: (response: any) => {     
+          this.similarItems = [];
+          if (response.response.length > 3) {
+            for(let item of response.response){
+              if(item.details.id != this.product.id){
+                this.similarItems.push(item);
+              }
+              if(this.similarItems.length == 3) break;
+            }
+          }
+          else {
+            this.similarItems = response.response;
+          }
         },
         error: (error: Error) => {
           console.log(error);
@@ -102,26 +184,99 @@ export class ViewProductComponent implements OnInit, OnDestroy {
     this.currentImageIndex = index;
   }
 
-  increaseQuantity(): void {
-    if(this.totalItems == this.product.stock) {
-      if(this.product.stock == 1){
-
-        this.notifyService.showError(`Only ${this.product.stock} item is in stock.`, "Failed");
+  changeQuantity(item: any){
+    console.log(item);
+    if(this.userService.isUserAuthenticated() && this.isInCart) {
+      this.cartService.UpdateCartItem(item).subscribe(
+        {
+        next: (response: any) => {          
+          if(response.response == false){
+            this.notifyService.showError(`Somehting went wrong. Please try again.`, "");
+          }
+        },
+        error: (error: HttpErrorResponse) => {
+          console.log(error);
+          this.notifyService.showError(`Error: ${error.error}`, "Failed");
+        }
       }
-      else{
-        this.notifyService.showError(`Only ${this.product.stock} items are in stock.`, "Failed");
-      }
-    }
-    else if(this.totalItems == 6){
-      this.notifyService.showError(`You cannot add more than 6 quantities of this product.`, "Failed");
-    }
-    else{
-      this.totalItems++;
+      ); 
     }
   }
 
-  decreaseQuantity(): void {
-    if(this.totalItems > 1) this.totalItems--;
+  ariaValueText(current: number, max: number) {
+		return `${current} out of ${max} hearts`;
+	}
+
+  addToCart(product: any) {
+    console.log(product);
+    if (this.userService.isUserAuthenticated()) {
+
+
+      var productId = product.id;
+      var userId = this.user.id;
+      var quantity = this.cartItem.quantity;
+      this.cartItem = new CartModel(userId, productId, quantity);
+      this.cartService.AddToCart(this.cartItem).subscribe(
+        {
+          next: (response: any) => {
+            if (response.response == false) {
+              this.notifyService.showError(`Somehting went wrong. Please try again.`, "");
+            }
+            this.cartService.onAddToCartInvokeCartIcon(this.user.id)
+            this.cartItem.id = response.itemId;
+            this.isInCart = true;
+          },
+          error: (error: Error) => {
+            console.log(error);
+            this.notifyService.showError(`Error: ${error.message}`, "Failed");
+          }
+        }
+      );
+
+    }
+    else {
+      this.notifyService.showInfo(`To add items to your basket, you must first sign in.`, "");
+      this.router.navigate(['/signin'])
+    }
+  }
+
+  // fetch all cart items from the server
+  fetchCartProducts() {
+    if (this.userService.isUserAuthenticated()) {
+      this.cartService.GetCartItems(this.user.id).subscribe(
+        {
+          next: (response: any) => {
+            if (response.response) {
+              var cartItems = response.items;
+              
+              
+              for(var item of cartItems) {
+                
+                if(item.details.id == this.product.id){
+                  this.isInCart = true;
+                  this.cartItem = item.item;
+                  break;
+                }
+              }
+              
+            }
+            else {
+              this.isInCart = false;
+            }
+          },
+          error: (error: HttpErrorResponse) => {
+            console.log(error);
+            this.notifyService.showError(`Error: ${error.error}`, "Failed");
+          }
+        }
+      );
+    }
+  }
+
+  returnRating(rating:number, totalRatings:number):number{
+    if(rating == 0 || totalRatings == 0)
+    return 5;
+    return rating/totalRatings;
   }
 
 }

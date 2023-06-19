@@ -32,33 +32,22 @@ namespace GroceryWala.Controllers
         {
             try
             {
-
                 var products = await productService.GetProductsByCategory(category);
 
-                var images = await productService.GetAllProductsImages();
 
                 var res = new List<AllProductModel>();
 
                 foreach (var product in products)
                 {
                     string productId = product.Id.ToString();
-                    var productImages = new List<ImageModel>();
-                    foreach (var image in images)
-                    {
-                        if (productId == image.ProductId)
-                        {
-                            productImages.Add(new ImageModel()
-                            {
-                                Id = image.Id,
-                                ProductId = image.ProductId,
-                                ImageAddress = "http://127.0.0.1:8080/images/" + image.ImageAddress.Substring(97)
-                            });
-                        }
-                    }
+
+                    var productImage = productService.GetProductImage(productId);
+
                     res.Add(new AllProductModel()
                     {
                         Details = product,
-                        Images = productImages
+                        Images = productImage,
+                        IsInCart = false
                     });
                 }
 
@@ -112,7 +101,32 @@ namespace GroceryWala.Controllers
             }
         }
 
+        [HttpGet("getoffers")]
+        public async Task<IActionResult> GetOffers()
+        {
+            try
+            {
 
+                var offers = await productService.GetAllOffers();
+
+                if (offers.Any())
+                {
+                    return Ok(new
+                    {
+                        response = true,
+                        offers = offers
+                    });
+                }
+                return BadRequest(new
+                {
+                    error = ModelState.Values
+                });
+            }
+            catch (Exception Ex)
+            {
+                return BadRequest(Ex.Message);
+            }
+        }
 
     }
 }

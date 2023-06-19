@@ -11,6 +11,12 @@ namespace GroceryWala.DataAccessLayer.Repository.UnitOfWork
 
         public IProductRepository ProductRepository { get; set; }
         public IImageRepository ImageRepository { get; set; }
+        public ICartItemRepository CartItemRepository { get; set; }
+        public ICommentRepository CommentRepository { get; set; }
+        public IRatingRepository RatingRepository { get; set; }
+        public IOfferRepository OfferRepository { get; set; }
+        public IOrderRepository OrderRepository { get; set; }
+        public IUserOrderRepository UserOrderRepository { get; set; }
 
         public UnitOfWork(GroceryWalaContext context)
         {
@@ -18,7 +24,12 @@ namespace GroceryWala.DataAccessLayer.Repository.UnitOfWork
 
             ProductRepository = new ProductRepository(context);
             ImageRepository = new ImageRepository(context);
-
+            CartItemRepository = new CartItemRepository(context);
+            CommentRepository = new CommentRepository(context);
+            RatingRepository = new RatingRepository(context);
+            OfferRepository = new OfferRepository(context);
+            OrderRepository = new OrderRepository(context);
+            UserOrderRepository = new UserOrderRepository(context);
         }
 
         public async Task CompleteAsync()

@@ -8,6 +8,17 @@ namespace GroceryWala.DataAccessLayer.Repository.UnitOfWork
         IProductRepository ProductRepository { get; set; }
 
         IImageRepository ImageRepository { get; set; }
+        ICartItemRepository CartItemRepository { get; set; }
+        ICommentRepository CommentRepository { get; set; }
+
+        IRatingRepository RatingRepository { get; set; }
+
+        IOfferRepository OfferRepository { get; set; }
+
+        IOrderRepository OrderRepository { get; set; }
+        IUserOrderRepository UserOrderRepository { get; set; }
+
+
 
         Task CompleteAsync();
         void Dispose();

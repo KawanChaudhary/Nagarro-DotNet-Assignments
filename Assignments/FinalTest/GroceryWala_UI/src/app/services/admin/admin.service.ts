@@ -12,12 +12,32 @@ export class AdminService {
     return this.apiService.post('admin/addnewproduct', product);
   }
 
-  addProductImages(images: any){
-    return this.apiService.post('admin/addproductimages', images);
+  updateProduct(product: any){
+    return this.apiService.put('admin/updateproduct', product);
+  }
+
+  addProductImages(images: any, productId: any){
+    return this.apiService.post(`admin/addproductimages/${productId}`, images);
+  }
+
+  deleteImageById(imageId: any){
+    return this.apiService.delete(`admin/deleteimage/${imageId}`,);
+  }
+
+  deleteProductById(productId: any){
+    return this.apiService.delete(`admin/deleteproduct/${productId}`,);
   }
 
   getAllProducts(){
-    return this.apiService.getAll('admin/allproducts');
+    return this.apiService.get('admin/allproducts');
+  }
+
+  getAllUserOrders(){
+    return this.apiService.get('admin/allorders');
+  }
+
+  getMostOrderProducts(month:any){
+    return this.apiService.get(`admin/getmostorderproducts/${month}`);
   }
   
 }

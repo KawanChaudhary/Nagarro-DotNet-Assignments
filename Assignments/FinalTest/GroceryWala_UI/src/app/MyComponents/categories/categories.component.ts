@@ -21,12 +21,16 @@ export class CategoriesComponent {
   cleaningIcon = faSoap;
   personalIcon = faSprayCanSparkles;
 
+  allIcons = [this.fruitIcon, this.dairyIcon, this.snackIcon, this.beveragesIcon, this.frozenIcon,  
+              this.condimentsIcon, this.cleaningIcon, this.personalIcon];
+
   allCategory = CategoryEnum;
 
+  constructor() { 
+    
+  }
 
-  constructor() { }
-
-  Number(value: any): any {
+  Number(value: any): number {
     return parseInt(value);
   }
 

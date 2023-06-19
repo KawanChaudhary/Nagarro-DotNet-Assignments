@@ -609,4 +609,19 @@ label.valid:after {
     }
 }
 
+.dot {
+    height: 3px;
+    width: 3px;
+    margin-top: 3px;
+    margin-right: 5px;
+    background-color: #cc0707;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+.input-group-text{
+    position: absolute;
+    cursor: pointer;
+}
+
 /*# sourceMappingURL=style.css.map */

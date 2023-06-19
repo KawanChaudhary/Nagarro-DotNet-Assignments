@@ -13,7 +13,10 @@ namespace GroceryWala.DataAccessLayer.Repository.Interface
         Task<TEntity> GetById(Guid id);
         Task<TEntity> GetById(int id);
         Task<bool> Add(TEntity entity);
-        Task<bool> Update(TEntity entity);
+        bool Update(TEntity cartItem);
+        Task<bool> Delete(int itemId);
         Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
+
+        TEntity FindFirst(Expression<Func<TEntity, bool>> condition);
     }
 }

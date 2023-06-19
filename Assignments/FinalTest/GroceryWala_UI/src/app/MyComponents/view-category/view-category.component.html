@@ -19,13 +19,13 @@
           itemsPerPage: 12,
           currentPage: this.pagination,
           totalItems: this.allProductsCount
-        }">
-      <a routerLink="/viewproduct/{{this.product.details.id}}">
-
-
-        <div class="col hp">
-          <div class="card h-100 shadow-sm">
-            <img src={{product.images[0].imageAddress}} class="card-img-top" alt="product.title" />
+        };
+        let idx = index;
+        ">
+      <div class="col hp">
+        <div class="card h-100 shadow-sm">
+          <a routerLink="/viewproduct/{{this.product.details.id}}">
+            <img src={{product.images.imageAddress}} class="card-img-top" alt="product.title" />
 
             <div class="label-top-left shadow-sm">
               <span class="fw-bold">
@@ -34,47 +34,63 @@
               </span>
             </div>
 
-            <div *ngIf="product.details.discount > 0" class="label-top shadow-sm">
+            <div *ngIf="product.details.discount > 0 && product.details.stock > 0" class="label-top shadow-sm">
               <span class="fw-bold">{{product.details.discount}}% OFF</span>
             </div>
+          </a>
 
-            <div class="card-body">
-              <div class="label-down-right shadow-sm text-center ">
-                <span class="fw-bold">{{returnCategoryType(product.details.category)}}</span>
-              </div>
-              <div class="clearfix mb-3">
-                <span class="float-start badge rounded-pill bg-success">
-                  <fa-icon [icon]="rupeeIcon" />
-                  {{returnPrice(product.details.price, product.details.discount)}}
-                </span>
+          <div class="card-body">
+            <div class="label-down-right shadow-sm text-center ">
+              <span class="fw-bold">{{returnCategoryType(product.details.category)}}</span>
+            </div>
+            <div class="clearfix mb-3">
+              <span class="float-start badge rounded-pill bg-success">
+                <fa-icon [icon]="rupeeIcon" />
+                {{returnPrice(product.details.price, product.details.discount)}}
+              </span>
 
-                <span class="float-end fw-bold text-muted fst-italic">
-                  {{product.details.quantity + " " + returnSizeType(product.details.sizeType) }}
-                </span>
-              </div>
-              <h5 class="card-title">
-                <span class="fw-bold ">{{product.details.name}}</span>
-              </h5>
+              <span class="float-end fw-bold text-muted fst-italic">
+                {{product.details.quantity + " " + returnSizeType(product.details.sizeType) }}
+              </span>
+            </div>
+            <h5 class="card-title">
+              <span class="fw-bold h6 ">{{product.details.name}}</span>
+            </h5>
 
-              <div class="d-grid gap-2 my-2">
 
-                <a href="#" class="btn btn-outline-success  bold-btn">add to cart</a>
+            <div class="d-grid gap-2 my-2">
 
-              </div>
-              <div class="clearfix mb-1">
+              <button *ngIf="product.isInCart == false && product.details.stock > 0"
+                (click)="addToCart(product.details, idx)" class="btn btn-outline-success bold-btn">
+                add to cart
+              </button>
+              <button *ngIf="product.isInCart == true && product.details.stock > 0" routerLink="/viewcart/{{this.user.id}}"
+                class="btn btn-danger bold-btn">
+                go to cart
+              </button>
 
-                <span class="float-start"><a href="#"><i class="fas fa-question-circle"></i></a></span>
+                <button *ngIf="product.details.stock <= 0" class="btn btn-secondary bold-btn">
+                  Out Of stock
+                </button>
 
-                <span class="float-end">
-                  <i class="far fa-heart" style="cursor: pointer"></i>
+            </div>
 
-                </span>
-              </div>
+
+
+            <div class="clearfix mb-1">
+
+              <span class="float-start"><a href="#"><i class="fas fa-question-circle"></i></a></span>
+
+              <span class="float-end">
+                <i class="far fa-heart" style="cursor: pointer"></i>
+
+              </span>
             </div>
           </div>
-
         </div>
-      </a>
+
+      </div>
+
     </div>
   </div>
   <div *ngIf="this.allProductsCount > 12 || this.pagination > 1" class="d-flex justify-content-center mt-5">

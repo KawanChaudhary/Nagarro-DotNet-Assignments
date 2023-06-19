@@ -48,16 +48,7 @@ namespace GroceryWala.DataAccessLayer.Repository.Concrete
 
         public virtual async Task<IEnumerable<TEntity>> All()
         {
-            try
-            {
                 return await dbSet.ToListAsync();
-            }
-#pragma warning disable CS0168 // Variable is declared but never used
-            catch (Exception ex)
-#pragma warning restore CS0168 // Variable is declared but never used
-            {
-                return new List<TEntity>();
-            }
         }
 
         public async Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate)
@@ -65,9 +56,22 @@ namespace GroceryWala.DataAccessLayer.Repository.Concrete
             return await dbSet.Where(predicate).ToListAsync();
         }
 
-        public virtual Task<bool> Update(TEntity entity)
+        public TEntity FindFirst(Expression<Func<TEntity, bool>> condition)
         {
-            throw new NotImplementedException();
+            return dbSet.FirstOrDefault(condition.Compile());
+        }
+
+        public bool Update(TEntity cartItem)
+        {
+            dbSet.Update(cartItem);
+            return true;
+        }
+
+        public virtual async Task<bool> Delete(int itemId)
+        {
+            var item = await dbSet.FindAsync(itemId);
+            dbSet.Remove(item);
+            return true;
         }
     }
 }

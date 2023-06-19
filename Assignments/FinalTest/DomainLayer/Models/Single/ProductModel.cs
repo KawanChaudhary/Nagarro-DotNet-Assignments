@@ -1,11 +1,6 @@
 ﻿using GroceryWala.DomainLayer.Other;
-using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GroceryWala.DomainLayer.Models.Single
 {
@@ -29,7 +24,7 @@ namespace GroceryWala.DomainLayer.Models.Single
         public CategoryType Category { get; set; }
 
         [Required(ErrorMessage = "The Description is required.")]
-        [StringLength(500, ErrorMessage = "The Description field cannot exceed 500 characters.")]
+        [StringLength(500, ErrorMessage = "The Description field cannot exceed 255 characters.")]
         public string Description { get; set; }
 
         [Required]
@@ -42,10 +37,11 @@ namespace GroceryWala.DomainLayer.Models.Single
         [Required]
         public SizeType SizeType { get; set; }
 
-        public decimal Rating { get; set; }
+        public int Rating { get; set; }
 
         public int TotalRatings { get; set; }
 
+        [StringLength(500, ErrorMessage = "The other details field cannot exceed 255 characters.")]
         public string OtherDetails { get; set; }
 
         public int ReviewCount { get; set; }

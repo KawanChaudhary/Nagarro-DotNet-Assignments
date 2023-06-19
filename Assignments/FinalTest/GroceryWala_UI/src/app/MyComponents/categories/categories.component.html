@@ -1,6 +1,6 @@
 <section>
   <div class="container pt-4">
-    <nav class="row gy-4">
+    <nav class="row   ">
       <div class="col-lg-6 col-md-12">
         <div class="row">
           <div *ngFor="let cat of allCategory | keyvalue" class="col-3">
@@ -8,7 +8,7 @@
               <a routerLink="/viewcategory/{{cat.key}}" class="text-center d-flex flex-column justify-content-center">
                 <button type="button" class="icon-hover btn btn-outline-secondary mx-auto mb-2"
                   data-mdb-ripple-color="dark">
-                  <fa-icon [icon]="fruitIcon" />
+                  <fa-icon [icon]="allIcons[Number(cat.key)]" />
                 </button>
                 <div class="text-category">{{cat.value}}</div>
               </a>
@@ -24,7 +24,7 @@
               <a routerLink="/viewcategory/{{cat.key}}" class="text-center d-flex flex-column justify-content-center">
                 <button type="button" class="icon-hover btn btn-outline-secondary mx-auto mb-2"
                   data-mdb-ripple-color="dark">
-                  <fa-icon [icon]="fruitIcon" />
+                  <fa-icon [icon]="allIcons[Number(cat.key)]" />
                 </button>
                 <div class="text-category">{{cat.value}}</div>
               </a>

@@ -25,7 +25,7 @@ namespace GroceryWala.DomainLayer.Entities
 
         public SizeType SizeType { get; set; }
 
-        public decimal Rating { get; set; }
+        public int Rating { get; set; }
 
         public int TotalRatings { get; set; }
 

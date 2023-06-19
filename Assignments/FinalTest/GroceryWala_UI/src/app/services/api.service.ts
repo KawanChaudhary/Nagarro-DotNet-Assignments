@@ -10,12 +10,14 @@ export class ApiService {
   constructor(private http: HttpClient) {
     this.ROOT_URL = "http://localhost:3000/api"; 
   }
+ 
+// All main api calls
 
-  getByCategory(url: string, payload: ProductModel){
-    return this.http.post(`${this.ROOT_URL}/${url}`, payload);
+  getUserDetails(url: string, payload: any){
+    return this.http.get(`${this.ROOT_URL}/${url}`, payload);
   }
 
-  getById(url: string){
+  get(url: string){
     return this.http.get(`${this.ROOT_URL}/${url}`);
   }
   
@@ -31,8 +33,5 @@ export class ApiService {
     return this.http.delete(`${this.ROOT_URL}/${url}`);
   }
 
-  getAll(url: string){
-    return this.http.get(`${this.ROOT_URL}/${url}`);
-  }
 
 }

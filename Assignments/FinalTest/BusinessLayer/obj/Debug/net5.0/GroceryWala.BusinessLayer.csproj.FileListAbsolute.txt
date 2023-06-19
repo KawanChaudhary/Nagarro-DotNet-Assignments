@@ -10,3 +10,10 @@ C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\BusinessLa
 C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\BusinessLayer\obj\Debug\net5.0\GroceryWala.BusinessLayer.dll
 C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\BusinessLayer\obj\Debug\net5.0\ref\GroceryWala.BusinessLayer.dll
 C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\BusinessLayer\obj\Debug\net5.0\GroceryWala.BusinessLayer.pdb
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\BusinessLayer\bin\Debug\net5.0\GroceryWala.DataAccessLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\BusinessLayer\bin\Debug\net5.0\GroceryWala.DataServiceLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\BusinessLayer\bin\Debug\net5.0\GroceryWala.DomainLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\BusinessLayer\bin\Debug\net5.0\GroceryWala.DataServiceLayer.pdb
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\BusinessLayer\bin\Debug\net5.0\GroceryWala.DataAccessLayer.pdb
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\BusinessLayer\bin\Debug\net5.0\GroceryWala.DomainLayer.pdb
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\BusinessLayer\obj\Debug\net5.0\GroceryWala.BusinessLayer.csproj.CopyComplete
