@@ -510,7 +510,6 @@ C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA
 C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\TestProject\bin\Debug\netcoreapp3.1\libman.json
 C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\TestProject\bin\Debug\netcoreapp3.1\AspNetCoreHero.ToastNotification.Views.dll
 C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\TestProject\bin\Debug\netcoreapp3.1\AspNetCoreHero.ToastNotification.dll
-C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\TestProject\bin\Debug\netcoreapp3.1\WebApplication.StaticWebAssets.xml
 C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\TestProject\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
 C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\TestProject\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Http.Connections.Common.dll
 C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\DotNET_Assignment_OA\TestProject\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Http.Features.dll
